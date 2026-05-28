@@ -892,9 +892,16 @@
   /* ── FORM SUBMIT ── */
   document.getElementById('formPage').addEventListener('submit', e => {
     e.preventDefault();
-    const lang    = document.documentElement.getAttribute('data-lang') || 'fr';
     const form    = document.getElementById('formPage');
     const success = document.getElementById('formSuccess');
+    const email   = document.getElementById('formEmail').value.trim();
+    const pref    = document.getElementById('prefValue').value || 'non-renseigne';
+
+    fetch('/api/subscribe', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ email })
+    }).catch(err => console.warn('Subscribe:', err));
 
     gsap.to(form, {
       opacity: 0, y: -12, duration: 0.4, ease: 'power2.in',
