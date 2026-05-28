@@ -993,6 +993,12 @@ try {
         const btn = e.target.querySelector('button');
         const orig = btn.innerHTML;
         const lang = document.documentElement.getAttribute('data-lang') || 'fr';
+        const email = e.target.querySelector('input[type="email"]').value.trim();
+        fetch('/api/subscribe', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({ email })
+        }).catch(err => console.warn('Subscribe:', err));
         const msg = lang === 'en' ? "You're in the circle." : "Tu es dans le cercle.";
         btn.innerHTML = msg + ' <span class="arrow">✓</span>';
         btn.style.background = 'var(--accent)';
