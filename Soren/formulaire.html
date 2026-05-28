@@ -465,6 +465,26 @@
 
   .pref-card.is-dimmed { opacity: 0.3; }
 
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%       { transform: translateX(-6px); }
+    40%       { transform: translateX(6px); }
+    60%       { transform: translateX(-4px); }
+    80%       { transform: translateX(4px); }
+  }
+  .has-error { animation: shake 0.4s cubic-bezier(0.36,0.07,0.19,0.97); }
+  .form-email.has-error { border-bottom-color: #c97b7b; }
+  .pref-error-hint {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: #c97b7b;
+    text-transform: uppercase;
+    margin-top: 8px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .pref-error-hint.visible { opacity: 1; }
+
   @media (hover: hover) and (pointer: fine) {
     .pref-card:hover:not(.is-selected) {
       border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
@@ -681,6 +701,8 @@
       </div>
     </div>
 
+    <p class="pref-error-hint" id="prefErrorHint" data-i18n="form.pref.error">Choisis un parfum d'abord</p>
+
     <div class="form-divider" id="feDivider2"></div>
 
     <form class="form-fields" id="formPage" novalidate>
@@ -892,15 +914,37 @@
   /* ── FORM SUBMIT ── */
   document.getElementById('formPage').addEventListener('submit', e => {
     e.preventDefault();
-    const form    = document.getElementById('formPage');
-    const success = document.getElementById('formSuccess');
-    const email   = document.getElementById('formEmail').value.trim();
-    const pref    = document.getElementById('prefValue').value || 'non-renseigne';
+    const form       = document.getElementById('formPage');
+    const success    = document.getElementById('formSuccess');
+    const emailInput = document.getElementById('formEmail');
+    const email      = emailInput.value.trim();
+    const pref       = document.getElementById('prefValue').value;
+    const prefHint   = document.getElementById('prefErrorHint');
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    let valid = true;
+
+    if (!pref) {
+      valid = false;
+      prefHint.classList.add('visible');
+      document.getElementById('fePrefGrid').classList.add('has-error');
+      setTimeout(() => document.getElementById('fePrefGrid').classList.remove('has-error'), 500);
+    } else {
+      prefHint.classList.remove('visible');
+    }
+
+    if (!email || !emailRegex.test(email)) {
+      valid = false;
+      emailInput.classList.add('has-error');
+      setTimeout(() => emailInput.classList.remove('has-error'), 500);
+    }
+
+    if (!valid) return;
 
     fetch('/api/subscribe', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ email })
+      body: JSON.stringify({ email, preference: pref })
     }).catch(err => console.warn('Subscribe:', err));
 
     gsap.to(form, {
