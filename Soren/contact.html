@@ -855,7 +855,20 @@ document.getElementById('contactForm').addEventListener('submit', (e) => {
   e.preventDefault();
   const btn = e.target.querySelector('button');
   const orig = btn.innerHTML;
-  btn.innerHTML = (document.documentElement.getAttribute('data-lang') === 'en' ? 'Message sent.' : 'Message envoyé.') + ' <span class="arrow">✓</span>';
+  const lang = document.documentElement.getAttribute('data-lang') || 'fr';
+
+  fetch('/api/contact', {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({
+      name:    document.getElementById('ct-name').value.trim(),
+      email:   document.getElementById('ct-email').value.trim(),
+      subject: document.getElementById('ct-subject').value.trim(),
+      message: document.getElementById('ct-msg').value.trim()
+    })
+  }).catch(err => console.warn('Contact:', err));
+
+  btn.innerHTML = (lang === 'en' ? 'Message sent.' : 'Message envoyé.') + ' <span class="arrow">✓</span>';
   btn.style.background = 'var(--text)';
   btn.style.color = 'var(--bg)';
   setTimeout(() => { e.target.reset(); btn.innerHTML = orig; btn.style.background = ''; btn.style.color = ''; }, 3200);
