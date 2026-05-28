@@ -12,7 +12,7 @@ export default async function handler(req, res) {
       'api-key': process.env.BREVO_API_KEY
     },
     body: JSON.stringify({
-      sender: { name: 'SOREN Contact', email: 'contact.sorenparis@gmail.com' },
+      sender: { name: 'SOREN', email: 'contact@soren-paris.com' },
       to: [{ email: 'contact.sorenparis@gmail.com', name: 'SOREN' }],
       replyTo: { email: email, name: name || email },
       subject: subject ? `[SOREN] ${subject}` : '[SOREN] Nouveau message',
