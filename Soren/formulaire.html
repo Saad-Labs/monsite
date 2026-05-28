@@ -1,0 +1,933 @@
+﻿<!DOCTYPE html>
+<html lang="fr" data-lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#0D0D0B" media="(prefers-color-scheme: dark)" />
+<meta name="theme-color" content="#F0EBE1" media="(prefers-color-scheme: light)" />
+<meta name="color-scheme" content="dark" id="meta-color-scheme" />
+<title>SOREN — Rejoins le cercle</title>
+<meta name="description" content="Rejoins le premier batch SOREN. Choisis ton parfum, entre ton email. On te previent 48h avant tout le monde." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Host+Grotesk:wght@300;400;500&display=swap" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+<style>
+  /* ── DESIGN SYSTEM ── */
+  :root {
+    --bg: #0D0D0B;
+    --text: #F0EBE1;
+    --accent: #C4A8B4;
+    --text-muted: color-mix(in srgb, var(--text) 55%, transparent);
+    --border: color-mix(in srgb, var(--text) 12%, transparent);
+    --surface-raised: #161614;
+    --grain-opacity: 0.5;
+    --nav-h: 64px;
+    color-scheme: dark;
+  }
+  [data-theme="light"] {
+    --bg: #F0EBE1;
+    --text: #0D0D0B;
+    --accent: #B48F9F;
+    --text-muted: rgba(13, 13, 11, 0.55);
+    --border: rgba(13, 13, 11, 0.12);
+    --surface-raised: #E8E1D4;
+    --grain-opacity: 0.25;
+    color-scheme: light;
+  }
+
+  html { background: var(--bg); transition: background 0.7s cubic-bezier(0.65, 0, 0.35, 1); }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Host Grotesk', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+    cursor: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    transition: background 0.7s cubic-bezier(0.65, 0, 0.35, 1), color 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+
+  /* Grain */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.94 0 0 0 0 0.92 0 0 0 0 0.88 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9998;
+    opacity: var(--grain-opacity);
+    mix-blend-mode: overlay;
+    transition: opacity 0.7s ease;
+  }
+
+  ::selection { background: var(--accent); color: var(--bg); }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+
+  /* ── CURSOR ── */
+  .cursor {
+    position: fixed;
+    top: 0; left: 0;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                height 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                background 0.35s ease,
+                opacity 0.3s ease;
+  }
+  .cursor.is-hover {
+    width: 56px; height: 56px;
+    background: transparent;
+    border: 1px solid var(--accent);
+  }
+  @media (max-width: 1024px) {
+    body { cursor: auto; }
+    .cursor { display: none; }
+  }
+
+  /* ── NAVBAR ── */
+  .nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: var(--nav-h);
+    display: grid;
+    grid-template-columns: minmax(0,1fr) auto minmax(0,1fr);
+    align-items: center;
+    padding: 0 40px;
+    z-index: 100;
+    background: color-mix(in srgb, var(--bg) 85%, transparent);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    transition: background 0.5s ease, color 0.5s ease, border-color 0.5s ease;
+  }
+  .nav > .lang-switch { justify-self: start; }
+  .nav > .nav-logo   { justify-self: center; }
+  .nav > .nav-back   { justify-self: end; }
+
+  @media (hover: hover) and (pointer: fine) {
+    .nav:hover { background: var(--text); color: var(--bg); }
+    .nav:hover .nav-back { border-color: var(--bg); color: var(--bg); }
+    .nav:hover .nav-back:hover { background: var(--bg); color: var(--text); }
+    .nav:hover .lang-btn { color: var(--bg); }
+    .nav:hover .lang-btn.active { color: var(--bg); }
+  }
+
+  .lang-switch {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-family: 'Host Grotesk', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+  }
+  .lang-btn {
+    background: none; border: none;
+    color: var(--text); cursor: none;
+    font-family: inherit; font-size: inherit; letter-spacing: inherit;
+    padding: 4px 0; font-weight: 300; opacity: 0.5;
+    transition: opacity 0.3s ease, color 0.5s ease;
+    text-transform: uppercase;
+  }
+  .lang-btn:hover { opacity: 0.9; }
+  .lang-btn.active { opacity: 1; font-weight: 400; }
+  .lang-sep { opacity: 0.3; }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    letter-spacing: 0.46em;
+    font-weight: 400;
+    text-decoration: none;
+    color: inherit;
+    text-indent: 0.46em;
+  }
+
+  .nav-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 22px;
+    border: 1px solid var(--text);
+    color: var(--text);
+    background: transparent;
+    font-family: 'Host Grotesk', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    cursor: none;
+    text-decoration: none;
+    transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .nav-back:hover {
+      background: var(--text); color: var(--bg);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px color-mix(in srgb, var(--text) 15%, transparent);
+    }
+  }
+
+  /* ── CTA BUTTON ── */
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 32px;
+    border: 1px solid var(--text);
+    color: var(--text);
+    background: transparent;
+    font-family: 'Host Grotesk', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    cursor: none;
+    text-decoration: none;
+    font-weight: 400;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                background 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                color 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .cta:hover {
+      background: var(--text); color: var(--bg);
+      transform: translateY(-3px);
+      box-shadow: 0 18px 40px color-mix(in srgb, var(--text) 18%, transparent),
+                  0 6px 14px color-mix(in srgb, var(--text) 12%, transparent);
+    }
+    .cta:hover .arrow { transform: translateX(6px); }
+  }
+  .cta:active { transform: scale(0.97); }
+  .cta .arrow {
+    display: inline-block;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    font-family: 'Host Grotesk', sans-serif;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    padding: 100px 0 60px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+  .container { max-width: 1400px; margin: 0 auto; padding: 0 60px; }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    letter-spacing: 0.5em;
+    margin-bottom: 24px;
+    text-indent: 0.5em;
+  }
+  .footer-tagline {
+    color: var(--text);
+    opacity: 0.7;
+    margin-bottom: 56px;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 16px;
+  }
+  .footer-socials {
+    display: flex;
+    justify-content: center;
+    gap: 36px;
+    margin-bottom: 64px;
+  }
+  .footer-socials a {
+    color: var(--accent);
+    text-decoration: none;
+    cursor: none;
+    transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px; height: 40px;
+  }
+  .footer-socials a:hover { opacity: 0.65; transform: translateY(-2px); }
+  .footer-socials svg { width: 20px; height: 20px; fill: currentColor; display: block; }
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+  .footer-links a {
+    color: inherit; text-decoration: none; cursor: none;
+    transition: color 0.3s ease;
+  }
+  .footer-links a:hover { color: var(--text); }
+  .footer-copy {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  /* ── THEME TOGGLE ── */
+  .theme-toggle {
+    position: fixed;
+    bottom: 32px; right: 32px;
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--text);
+    cursor: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                background 0.7s ease,
+                border-color 0.7s ease,
+                box-shadow 0.5s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    -webkit-tap-highlight-color: transparent;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .theme-toggle:hover {
+      transform: translateY(-3px) scale(1.06);
+      border-color: var(--accent);
+      box-shadow: 0 14px 36px rgba(196, 168, 180, 0.28);
+    }
+  }
+  .theme-toggle:active { transform: scale(0.92); }
+  .theme-toggle.is-spinning {
+    transform: rotate(360deg) scale(1.05);
+    transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1),
+                background 0.7s ease, border-color 0.7s ease;
+  }
+  .theme-icon {
+    position: absolute;
+    width: 20px; height: 20px;
+    transition: opacity 0.55s cubic-bezier(0.65, 0, 0.35, 1),
+                transform 0.55s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+  .icon-sun  { opacity: 1; transform: rotate(0deg) scale(1); }
+  .icon-moon { opacity: 0; transform: rotate(-90deg) scale(0.4); }
+  [data-theme="light"] .icon-sun  { opacity: 0; transform: rotate(90deg) scale(0.4); }
+  [data-theme="light"] .icon-moon { opacity: 1; transform: rotate(0deg) scale(1); }
+
+  /* ── FORM PAGE ── */
+  .form-main {
+    min-height: calc(100vh - var(--nav-h));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: calc(var(--nav-h) + 80px) 24px 100px;
+    position: relative;
+  }
+
+  /* Radial glow behind the form */
+  .form-main::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 40%, rgba(196, 168, 180, 0.05) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .form-wrap {
+    width: 100%;
+    max-width: 520px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .form-eyebrow {
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 32px;
+  }
+
+  .form-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-size: clamp(42px, 9vw, 68px);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin-bottom: 22px;
+  }
+
+  .form-title em {
+    font-style: italic;
+  }
+
+  .form-sub {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--text-muted);
+    line-height: 1.65;
+    margin-bottom: 56px;
+  }
+
+  .form-divider {
+    height: 1px;
+    background: var(--border);
+    margin-bottom: 48px;
+    transform-origin: left center;
+    transition: background 0.7s ease;
+  }
+
+  /* Preference section */
+  .form-pref { margin-bottom: 0; }
+
+  .form-pref-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+  }
+
+  /* 2-column grid for the first two, "les deux" below centered */
+  .pref-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .pref-both-wrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 52px;
+  }
+
+  .pref-both-wrap .pref-card {
+    width: calc(50% - 5px);
+  }
+
+  .pref-card {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    font-family: 'Host Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 20px 16px 18px;
+    cursor: none;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    transition: border-color 0.35s ease, color 0.35s ease, opacity 0.35s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .pref-card-hint {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 12px;
+    text-transform: none;
+    letter-spacing: 0.02em;
+    color: var(--text-muted);
+    transition: color 0.35s ease;
+    line-height: 1.4;
+  }
+
+  .pref-card.is-selected {
+    border-color: var(--accent);
+    color: var(--text);
+  }
+  .pref-card.is-selected .pref-card-hint { color: var(--text-muted); opacity: 0.85; }
+
+  .pref-card.is-dimmed { opacity: 0.3; }
+
+  @media (hover: hover) and (pointer: fine) {
+    .pref-card:hover:not(.is-selected) {
+      border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
+      color: var(--text);
+    }
+  }
+
+  /* Form fields */
+  .form-fields { text-align: center; }
+
+  .form-email {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+    font-family: 'Host Grotesk', sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.04em;
+    padding: 18px 4px;
+    text-align: center;
+    outline: none;
+    cursor: none;
+    transition: border-color 0.4s ease;
+    margin-bottom: 32px;
+  }
+  .form-email::placeholder {
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-size: 11px;
+  }
+  .form-email:focus { border-bottom-color: var(--accent); }
+
+  .form-submit {
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 32px;
+  }
+
+  .form-micro {
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    line-height: 1.9;
+  }
+
+  /* Success state overlay */
+  .form-success {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 52px 0 40px;
+    opacity: 0;
+  }
+  .form-success.visible {
+    display: flex;
+  }
+  .success-mark {
+    width: 40px; height: 40px;
+    border: 1px solid var(--accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: var(--accent);
+  }
+  .success-title {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--text);
+    line-height: 1.3;
+  }
+  .success-sub {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  /* ── ENTRANCE ANIMATIONS (CSS-only, no GSAP dependency) ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes drawLine {
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
+  }
+
+  .form-eyebrow    { animation: fadeUp 0.7s  cubic-bezier(0.16,1,0.3,1) 0.1s  both; }
+  .form-title      { animation: fadeUp 0.9s  cubic-bezier(0.16,1,0.3,1) 0.24s both; }
+  .form-sub        { animation: fadeUp 0.75s cubic-bezier(0.16,1,0.3,1) 0.42s both; }
+  #feDivider1      { animation: drawLine 0.8s cubic-bezier(0.4,0,0.2,1) 0.56s both; }
+  .form-pref-label { animation: fadeUp 0.65s cubic-bezier(0.16,1,0.3,1) 0.68s both; }
+  .pref-grid .pref-card:nth-child(1)  { animation: fadeUp 0.65s cubic-bezier(0.16,1,0.3,1) 0.76s both; }
+  .pref-grid .pref-card:nth-child(2)  { animation: fadeUp 0.65s cubic-bezier(0.16,1,0.3,1) 0.86s both; }
+  .pref-both-wrap  .pref-card         { animation: fadeUp 0.65s cubic-bezier(0.16,1,0.3,1) 0.96s both; }
+  #feDivider2      { animation: drawLine 0.8s cubic-bezier(0.4,0,0.2,1) 1.06s both; }
+  .form-email      { animation: fadeUp 0.65s cubic-bezier(0.16,1,0.3,1) 1.16s both; }
+  #formSubmitBtn   { animation: fadeUp 0.65s cubic-bezier(0.16,1,0.3,1) 1.26s both; }
+  .form-micro      { animation: fadeUp 0.6s  cubic-bezier(0.16,1,0.3,1) 1.36s both; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .form-eyebrow, .form-title, .form-sub, #feDivider1, .form-pref-label,
+    .pref-card, #feDivider2, .form-email, #formSubmitBtn, .form-micro {
+      animation: none;
+    }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .nav { padding: 0 20px; }
+    .form-main { padding: calc(var(--nav-h) + 56px) 20px 80px; }
+    .form-title { font-size: clamp(36px, 12vw, 52px); }
+    .form-sub { font-size: 15px; margin-bottom: 44px; }
+    .pref-grid { grid-template-columns: 1fr; }
+    .pref-both-wrap .pref-card { width: 100%; }
+    .footer { padding: 70px 0 90px; }
+    .footer-logo { font-size: 24px; letter-spacing: 0.42em; text-indent: 0.42em; }
+    .container { padding: 0 20px; }
+    .theme-toggle { bottom: 24px; right: 20px; width: 44px; height: 44px; }
+    .nav-back { display: none; }
+  }
+  @media (max-width: 380px) {
+    .pref-card { padding: 16px 12px 14px; font-size: 10px; }
+    .pref-card-hint { font-size: 11px; }
+  }
+</style>
+<script>
+(function(){try{var p=new URLSearchParams(location.search);var t=p.get('theme'),l=p.get('lang');if(t==='light'){document.documentElement.setAttribute('data-theme','light');var m=document.getElementById('meta-color-scheme');if(m)m.setAttribute('content','light');}if(l==='en'||l==='fr'){document.documentElement.setAttribute('data-lang',l);document.documentElement.setAttribute('lang',l);}}catch(e){}})();
+</script>
+
+  <!-- SEO -->
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://soren-paris.fr/formulaire.html" />
+  <meta property="og:type"        content="website" />
+  <meta property="og:site_name"   content="SOREN" />
+  <meta property="og:title"       content="SOREN — Rejoins le cercle" />
+  <meta property="og:description" content="Rejoins le premier batch SOREN. Choisis ton parfum, entre ton email. On te previent 48h avant tout le monde." />
+  <meta property="og:url"         content="https://soren-paris.fr/formulaire.html" />
+  <meta property="og:image"       content="https://soren-paris.fr/images/blog-image-1.png" />
+  <meta property="og:locale"      content="fr_FR" />
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="SOREN — Rejoins le cercle" />
+  <meta name="twitter:description" content="Rejoins le premier batch SOREN. Choisis ton parfum, entre ton email. On te previent 48h avant tout le monde." />
+  <meta name="twitter:image"       content="https://soren-paris.fr/images/blog-image-1.png" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"SOREN","url":"https://soren-paris.fr","sameAs":["https://www.instagram.com/sore.nparis/","https://www.tiktok.com/@soren_paris","https://www.youtube.com/@Soren-paris"],"contactPoint":{"@type":"ContactPoint","email":"contact.sorenparis@gmail.com","contactType":"customer service"}}</script>
+</head>
+
+<body>
+
+<div class="cursor" id="cursor"></div>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav class="nav" id="nav">
+  <div class="lang-switch">
+    <button class="lang-btn active" data-lang="fr">FR</button>
+    <span class="lang-sep">/</span>
+    <button class="lang-btn" data-lang="en">EN</button>
+  </div>
+  <a href="index.html" class="nav-logo">SOREN</a>
+  <a href="index.html" class="nav-back" data-cta data-i18n="form.back">← Accueil</a>
+</nav>
+
+<!-- ═══ MAIN ═══ -->
+<main class="form-main">
+  <div class="form-wrap" id="formWrap">
+
+    <p class="form-eyebrow" id="feEyebrow" data-i18n="form.eyebrow">Soren · Premier batch</p>
+
+    <h1 class="form-title" id="feTitle" data-i18n-html="form.title">
+      Rejoins<br><em>le cercle.</em>
+    </h1>
+
+    <p class="form-sub" id="feSub" data-i18n="form.sub">
+      On te prévient 48h avant l'ouverture.<br>Pas de fausse rareté.
+    </p>
+
+    <div class="form-divider" id="feDivider1"></div>
+
+    <div class="form-pref">
+      <p class="form-pref-label" id="fePrefLabel" data-i18n="form.pref.label">Tu penches vers</p>
+
+      <div class="pref-grid" id="fePrefGrid">
+        <button type="button" class="pref-card" data-pref="innocent" data-i18n-card="innocent">
+          <span data-i18n="form.pref.innocent.name">Plaisir innocent</span>
+          <span class="pref-card-hint" data-i18n="form.pref.innocent.hint">Discret. Mais inoubliable.</span>
+        </button>
+        <button type="button" class="pref-card" data-pref="coupable" data-i18n-card="coupable">
+          <span data-i18n="form.pref.coupable.name">Désir coupable</span>
+          <span class="pref-card-hint" data-i18n="form.pref.coupable.hint">Plaider coupable n'a jamais senti aussi bon.</span>
+        </button>
+      </div>
+
+      <div class="pref-both-wrap">
+        <button type="button" class="pref-card" data-pref="les-deux">
+          <span data-i18n="form.pref.both.name">Les deux</span>
+          <span class="pref-card-hint" data-i18n="form.pref.both.hint">Pourquoi choisir ?</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="form-divider" id="feDivider2"></div>
+
+    <form class="form-fields" id="formPage" novalidate>
+      <input type="hidden" name="preference" id="prefValue" value="" />
+
+      <input
+        type="email"
+        class="form-email"
+        id="formEmail"
+        placeholder="Ton email"
+        data-i18n-placeholder="form.email.placeholder"
+        required
+        autocomplete="email"
+      />
+
+      <button type="submit" class="cta form-submit" data-cta id="formSubmitBtn" data-i18n-html="form.cta">
+        Entrer dans le cercle <span class="arrow">→</span>
+      </button>
+
+      <p class="form-micro" data-i18n-html="form.micro">
+        Notifié 48h avant l'ouverture publique<br>Aucun spam · Juste l'essentiel
+      </p>
+    </form>
+
+    <!-- Success state -->
+    <div class="form-success" id="formSuccess">
+      <div class="success-mark">✓</div>
+      <p class="success-title" data-i18n="form.success.title">Tu es dans le cercle.</p>
+      <p class="success-sub" data-i18n="form.success.sub">On te contacte 48h avant tout le monde.</p>
+    </div>
+
+  </div>
+</main>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-logo">SOREN</div>
+    <div class="footer-tagline" data-i18n="foo.tagline">Tu sais ce qu'il y a dedans.</div>
+
+    <div class="footer-socials">
+      <a href="https://www.youtube.com/@Soren-paris" target="_blank" rel="noopener" data-cta aria-label="YouTube">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+        </svg>
+      </a>
+      <a href="https://www.tiktok.com/@soren_paris" target="_blank" rel="noopener" data-cta aria-label="TikTok">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43V8.69a8.16 8.16 0 0 0 4.77 1.52V6.77a4.85 4.85 0 0 1-1.84-.08z"/>
+        </svg>
+      </a>
+      <a href="https://www.instagram.com/sore.nparis/" target="_blank" rel="noopener" data-cta aria-label="Instagram">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="footer-links">
+      <a href="mentions-legales.html" data-cta data-i18n="foo.legal">Mentions légales</a>
+      <a href="cgv.html" data-cta data-i18n="foo.terms">CGV</a>
+      <a href="contact.html" data-cta data-i18n="foo.contact">Contact</a>
+    </div>
+    <div class="footer-copy">© 2026 SOREN</div>
+  </div>
+
+  <button class="theme-toggle" id="themeToggle" data-cta aria-label="Toggle day/night mode">
+    <svg class="theme-icon icon-sun" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+    <svg class="theme-icon icon-moon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+    </svg>
+  </button>
+</footer>
+
+<script>
+  const _reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (_reduced) gsap.defaults({ duration: 0.01, ease: 'none' });
+
+  /* ── CURSOR ── */
+  const cursor = document.getElementById('cursor');
+  let mX = 0, mY = 0, cX = 0, cY = 0;
+  document.addEventListener('mousemove', e => { mX = e.clientX; mY = e.clientY; });
+  (function loop() {
+    cX += (mX - cX) * 0.18;
+    cY += (mY - cY) * 0.18;
+    if (cursor) cursor.style.transform = `translate(${cX}px,${cY}px) translate(-50%,-50%)`;
+    requestAnimationFrame(loop);
+  })();
+  const hoverIn  = () => cursor && cursor.classList.add('is-hover');
+  const hoverOut = () => cursor && cursor.classList.remove('is-hover');
+  function bindCursor() {
+    document.querySelectorAll('[data-cta], a, button, input, .pref-card').forEach(el => {
+      el.addEventListener('mouseenter', hoverIn);
+      el.addEventListener('mouseleave', hoverOut);
+    });
+  }
+  bindCursor();
+
+  /* ── i18n ── */
+  const i18n = {
+    fr: {
+      'form.back': '← Accueil',
+      'form.eyebrow': 'Soren · Premier batch',
+      'form.title': 'Rejoins<br><em>le cercle.</em>',
+      'form.sub': 'On te prévient 48h avant l\'ouverture.<br>Pas de fausse rareté.',
+      'form.pref.label': 'Tu penches vers',
+      'form.pref.innocent.name': 'Plaisir innocent',
+      'form.pref.innocent.hint': 'Discret. Mais inoubliable.',
+      'form.pref.coupable.name': 'Désir coupable',
+      'form.pref.coupable.hint': 'Plaider coupable n\'a jamais senti aussi bon.',
+      'form.pref.both.name': 'Les deux',
+      'form.pref.both.hint': 'Pourquoi choisir ?',
+      'form.email.placeholder': 'Ton email',
+      'form.cta': 'Entrer dans le cercle <span class="arrow">→</span>',
+      'form.micro': 'Notifié 48h avant l\'ouverture publique<br>Aucun spam · Juste l\'essentiel',
+      'form.success.title': 'Tu es dans le cercle.',
+      'form.success.sub': 'On te contacte 48h avant tout le monde.',
+      'foo.tagline': 'Tu sais ce qu\'il y a dedans.',
+      'foo.legal': 'Mentions légales',
+      'foo.terms': 'CGV',
+      'foo.contact': 'Contact',
+    },
+    en: {
+      'form.back': '← Home',
+      'form.eyebrow': 'Soren · First batch',
+      'form.title': 'Join<br><em>the circle.</em>',
+      'form.sub': 'We\'ll notify you 48h before launch.<br>No fake scarcity.',
+      'form.pref.label': 'You lean towards',
+      'form.pref.innocent.name': 'Innocent pleasure',
+      'form.pref.innocent.hint': 'Subtle. But unforgettable.',
+      'form.pref.coupable.name': 'Guilty desire',
+      'form.pref.coupable.hint': 'Pleading guilty has never smelled this good.',
+      'form.pref.both.name': 'Both',
+      'form.pref.both.hint': 'Why choose?',
+      'form.email.placeholder': 'Your email',
+      'form.cta': 'Enter the circle <span class="arrow">→</span>',
+      'form.micro': 'Notified 48h before public launch<br>No spam · Only what matters',
+      'form.success.title': 'You\'re in the circle.',
+      'form.success.sub': 'We\'ll contact you 48h before everyone else.',
+      'foo.tagline': 'You know what\'s in it.',
+      'foo.legal': 'Legal',
+      'foo.terms': 'Terms',
+      'foo.contact': 'Contact',
+    },
+  };
+
+  function applyLang(lang) {
+    document.documentElement.setAttribute('data-lang', lang);
+    document.documentElement.setAttribute('lang', lang);
+    document.querySelectorAll('.lang-btn').forEach(b =>
+      b.classList.toggle('active', b.dataset.lang === lang));
+
+    document.querySelectorAll('[data-i18n], [data-i18n-html], [data-i18n-placeholder]').forEach(el => {
+      const key = el.dataset.i18n || el.dataset.i18nHtml || el.dataset.i18nPlaceholder;
+      const val = i18n[lang]?.[key];
+      if (val === undefined) return;
+      if (el.dataset.i18nPlaceholder) el.placeholder = val;
+      else el.innerHTML = val;
+    });
+  }
+
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const lang = btn.dataset.lang;
+      const params = new URLSearchParams(window.location.search);
+      params.set('lang', lang);
+      window.history.replaceState(null, '', window.location.pathname + '?' + params.toString());
+      applyLang(lang);
+    });
+  });
+
+  const _initLang = document.documentElement.getAttribute('data-lang') || 'fr';
+  applyLang(_initLang);
+
+  /* Entrance handled by CSS @keyframes — no GSAP needed here */
+
+  /* ── PREFERENCE SELECTION ── */
+  const prefCards = document.querySelectorAll('.pref-card');
+  const prefValue = document.getElementById('prefValue');
+
+  prefCards.forEach(card => {
+    card.addEventListener('click', () => {
+      const already = card.classList.contains('is-selected');
+
+      prefCards.forEach(c => {
+        c.classList.remove('is-selected', 'is-dimmed');
+      });
+
+      if (!already) {
+        card.classList.add('is-selected');
+        prefCards.forEach(c => {
+          if (c !== card) c.classList.add('is-dimmed');
+        });
+        if (prefValue) prefValue.value = card.dataset.pref;
+
+        gsap.fromTo(card,
+          { scale: 1 },
+          { scale: 1.015, duration: 0.15, yoyo: true, repeat: 1, ease: 'power1.inOut' }
+        );
+      } else {
+        if (prefValue) prefValue.value = '';
+      }
+    });
+  });
+
+  /* ── FORM SUBMIT ── */
+  document.getElementById('formPage').addEventListener('submit', e => {
+    e.preventDefault();
+    const lang    = document.documentElement.getAttribute('data-lang') || 'fr';
+    const form    = document.getElementById('formPage');
+    const success = document.getElementById('formSuccess');
+
+    gsap.to(form, {
+      opacity: 0, y: -12, duration: 0.4, ease: 'power2.in',
+      onComplete: () => {
+        form.style.display = 'none';
+        success.classList.add('visible');
+        gsap.fromTo(success,
+          { opacity: 0, y: 16 },
+          { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }
+        );
+        gsap.from('.success-mark',
+          { scale: 0.4, opacity: 0, duration: 0.5, delay: 0.2, ease: 'back.out(1.7)' }
+        );
+      }
+    });
+  });
+
+  /* ── THEME TOGGLE ── */
+  const themeToggle = document.getElementById('themeToggle');
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme') || 'dark';
+      const next    = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      const metaCS = document.getElementById('meta-color-scheme');
+      if (metaCS) metaCS.setAttribute('content', next);
+      themeToggle.classList.add('is-spinning');
+      setTimeout(() => themeToggle.classList.remove('is-spinning'), 700);
+      try {
+        const params = new URLSearchParams(window.location.search);
+        params.set('theme', next);
+        window.history.replaceState(null, '', window.location.pathname + '?' + params.toString());
+      } catch(err) {}
+    });
+  }
+
+  /* ── NAV SCROLL ── */
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+</script>
+
+</body>
+</html>
+
+

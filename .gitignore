@@ -1,0 +1,12 @@
+# Outils internes Claude Code
+.claude/
+.specify/
+CLAUDE.md
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+*.swp

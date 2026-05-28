@@ -1,0 +1,886 @@
+﻿<!DOCTYPE html>
+<html lang="fr" data-lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#0D0D0B" media="(prefers-color-scheme: dark)" />
+<meta name="theme-color" content="#F0EBE1" media="(prefers-color-scheme: light)" />
+<meta name="color-scheme" content="dark" id="meta-color-scheme" />
+  <meta name="description" content="Conditions Generales de Vente SOREN. Parfums roll-on sans alcool formules a Paris. Informations sur la commande, la livraison et les retours." />
+<title>CGV — SOREN</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Host+Grotesk:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --bg: #0D0D0B;
+  --bg-deep: #0D0D0B;
+  --bg-card: #0D0D0B;
+  --bg-card-elev: #0D0D0B;
+  --text: #F0EBE1;
+  --accent: #C4A8B4;
+  --text-muted: color-mix(in srgb, var(--text) 55%, transparent);
+  --border: color-mix(in srgb, var(--text) 12%, transparent);
+  --shadow-strong: rgba(0, 0, 0, 0.55);
+  --grain-opacity: 0.5;
+  --nav-h: 64px;
+  color-scheme: dark;
+}
+[data-theme="light"] {
+  --bg: #F0EBE1;
+  --bg-deep: #F0EBE1;
+  --bg-card: #F0EBE1;
+  --bg-card-elev: #F0EBE1;
+  --text: #0D0D0B;
+  --accent: #B48F9F;
+  --text-muted: rgba(13, 13, 11, 0.55);
+  --border: rgba(13, 13, 11, 0.12);
+  --shadow-strong: rgba(40, 30, 25, 0.12);
+  --grain-opacity: 0.25;
+  color-scheme: light;
+}
+html { background: var(--bg); transition: background 0.7s cubic-bezier(0.65, 0, 0.35, 1); }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Host Grotesk', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.7;
+  overflow-x: hidden;
+  cursor: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background 0.7s cubic-bezier(0.65, 0, 0.35, 1), color 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+}
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.94 0 0 0 0 0.92 0 0 0 0 0.88 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9998;
+  opacity: var(--grain-opacity);
+  mix-blend-mode: overlay;
+  transition: opacity 0.7s ease;
+}
+::selection { background: var(--accent); color: var(--bg); }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.1s !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Keyboard navigation */
+:focus { outline: none; }
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+  transition: outline-offset 0.2s ease;
+}
+.nav-cta:focus-visible,
+.cta:focus-visible,
+.theme-toggle:focus-visible { outline-offset: 4px; }
+.lang-btn:focus-visible { outline-offset: 2px; }
+input:focus-visible, textarea:focus-visible { outline: none; }
+
+
+button, a, input, textarea, .cta, .theme-toggle, .nav-cta, .lang-btn {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.display {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+.display-italic {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-style: italic;
+}
+.label {
+  font-family: 'Host Grotesk', sans-serif;
+  font-weight: 400;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* CURSOR */
+.cursor {
+  position: fixed;
+  top: 0; left: 0;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              height 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.35s ease;
+}
+.cursor.is-hover {
+  width: 56px; height: 56px;
+  background: transparent;
+  border: 1px solid var(--accent);
+}
+@media (max-width: 1024px) {
+  body { cursor: auto; }
+  .cursor { display: none; }
+}
+
+/* NAVBAR */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--nav-h);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  padding: 0 40px;
+  z-index: 100;
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.5s ease, color 0.5s ease, border-color 0.5s ease;
+}
+.nav > .lang-switch { justify-self: start; }
+.nav > .nav-logo { justify-self: center; }
+.nav > .nav-cta { justify-self: end; }
+@media (hover: hover) and (pointer: fine) {
+  .nav:hover {
+    background: var(--text);
+    color: var(--bg);
+  }
+  .nav:hover .nav-cta { border-color: var(--bg); color: var(--bg); }
+  .nav:hover .nav-cta:hover { background: var(--bg); color: var(--text); }
+  .nav:hover .lang-btn { color: var(--bg); }
+}
+
+.lang-switch {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: 'Host Grotesk', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+}
+.lang-btn {
+  background: none;
+  border: none;
+  color: var(--text);
+  cursor: none;
+  font-family: inherit;
+  font-size: inherit;
+  letter-spacing: inherit;
+  padding: 4px 0;
+  font-weight: 300;
+  opacity: 0.5;
+  transition: opacity 0.3s ease, color 0.5s ease;
+  text-transform: uppercase;
+}
+.lang-btn:hover { opacity: 0.9; }
+.lang-btn.active { opacity: 1; font-weight: 400; }
+.lang-sep { opacity: 0.3; }
+
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  letter-spacing: 0.46em;
+  font-weight: 400;
+  text-decoration: none;
+  color: inherit;
+  text-indent: 0.46em;
+}
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  padding: 11px 22px;
+  border: 1px solid var(--text);
+  color: var(--text);
+  background: transparent;
+  font-family: 'Host Grotesk', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  cursor: none;
+  text-decoration: none;
+  transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (hover: hover) and (pointer: fine) {
+  .nav-cta:hover {
+    background: var(--text);
+    color: var(--bg);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px color-mix(in srgb, var(--text) 15%, transparent);
+  }
+}
+
+/* PAGE HEAD */
+.page-head {
+  padding: calc(var(--nav-h) + 120px) 0 100px;
+  text-align: center;
+  position: relative;
+}
+.page-head .label { display: inline-block; margin-bottom: 28px; }
+.page-head h1 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: clamp(40px, 5vw, 76px);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.page-head h1 em {
+  font-style: italic;
+}
+.page-head .updated {
+  margin-top: 36px;
+  color: var(--text-muted);
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+/* CONTENT */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 60px;
+}
+.article {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 40px 0 200px;
+}
+.article > section {
+  padding: 56px 0;
+  border-top: 1px solid var(--border);
+}
+.article > section:first-child { border-top: none; padding-top: 24px; }
+.article h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: 13px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 32px;
+  font-style: normal;
+}
+.article p {
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--text);
+  opacity: 0.82;
+  margin-bottom: 18px;
+}
+.article p strong {
+  font-weight: 500;
+  opacity: 1;
+}
+.article p em {
+  font-style: italic;
+  color: var(--text-muted);
+}
+.article a:not(.cta) {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+  transition: border-color 0.3s ease;
+  cursor: none;
+}
+.article a:not(.cta):hover { border-bottom-color: var(--accent); }
+.article ul {
+  list-style: none;
+  margin: 14px 0 22px;
+  padding: 0;
+}
+.article li {
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--text);
+  opacity: 0.82;
+  padding-left: 22px;
+  position: relative;
+  margin-bottom: 6px;
+}
+.article li::before {
+  content: '·';
+  color: var(--accent);
+  position: absolute;
+  left: 8px;
+  font-size: 20px;
+  line-height: 1;
+  top: 4px;
+}
+.article .placeholder {
+  color: var(--accent);
+  font-style: italic;
+  opacity: 0.75;
+}
+
+/* CTA (generic) */
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 32px;
+  border: 1px solid var(--text);
+  color: var(--text);
+  background: transparent;
+  font-family: 'Host Grotesk', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  cursor: none;
+  text-decoration: none;
+  font-weight: 400;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              color 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (hover: hover) and (pointer: fine) {
+  .cta:hover {
+    background: var(--text);
+    color: var(--bg);
+    transform: translateY(-3px);
+    box-shadow: 0 18px 40px color-mix(in srgb, var(--text) 18%, transparent);
+  }
+  .cta:hover .arrow { transform: translateX(6px); }
+}
+.cta:active { transform: scale(0.97); }
+.cta .arrow { transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+
+/* FOOTER */
+.footer {
+  padding: 100px 0 60px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+.footer-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  letter-spacing: 0.5em;
+  margin-bottom: 24px;
+  text-indent: 0.5em;
+}
+.footer-tagline {
+  color: var(--text);
+  opacity: 0.7;
+  margin-bottom: 56px;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 16px;
+}
+.footer-socials {
+  display: flex;
+  justify-content: center;
+  gap: 36px;
+  margin-bottom: 64px;
+}
+.footer-socials a {
+  color: var(--accent);
+  text-decoration: none;
+  cursor: none;
+  transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+}
+.footer-socials a:hover { opacity: 0.65; transform: translateY(-2px); }
+.footer-socials svg { width: 20px; height: 20px; fill: currentColor; display: block; }
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.footer-links a {
+  color: inherit;
+  text-decoration: none;
+  cursor: none;
+  transition: color 0.3s ease;
+}
+.footer-links a:hover { color: var(--text); }
+.footer-copy {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* THEME TOGGLE */
+.theme-toggle {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  color: var(--accent);
+  cursor: none;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition:
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    background 0.7s ease,
+    border-color 0.7s ease,
+    box-shadow 0.5s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+@media (hover: hover) and (pointer: fine) {
+  .theme-toggle:hover {
+    transform: translateY(-3px) scale(1.06);
+    border-color: var(--accent);
+    box-shadow: 0 14px 36px rgba(196, 168, 180, 0.28);
+  }
+}
+.theme-toggle:active { transform: scale(0.92); transition: transform 0.12s ease-out, background 0.7s ease, border-color 0.7s ease; }
+.theme-toggle.is-spinning {
+  transform: rotate(360deg) scale(1.05);
+  transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1),
+              background 0.7s ease,
+              border-color 0.7s ease;
+}
+.theme-icon {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  transition:
+    opacity 0.55s cubic-bezier(0.65, 0, 0.35, 1),
+    transform 0.55s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.icon-sun { opacity: 1; transform: rotate(0deg) scale(1); }
+.icon-moon { opacity: 0; transform: rotate(-90deg) scale(0.4); }
+[data-theme="light"] .icon-sun { opacity: 0; transform: rotate(90deg) scale(0.4); }
+[data-theme="light"] .icon-moon { opacity: 1; transform: rotate(0deg) scale(1); }
+
+@media (max-width: 1024px) {
+  .container { padding: 0 32px; }
+  .nav { padding: 0 24px; }
+  .article { padding: 30px 0 120px; }
+  .page-head { padding: calc(var(--nav-h) + 80px) 0 60px; }
+}
+@media (max-width: 640px) {
+  .container { padding: 0 20px; }
+  /* Navbar — same compact treatment as landing */
+  .nav { padding: 0 14px; height: 56px; }
+  :root { --nav-h: 56px;
+}
+  .nav-logo { font-size: 15px; letter-spacing: 0.34em; text-indent: 0.34em; }
+  .lang-switch { gap: 8px; font-size: 10px; letter-spacing: 0.14em; }
+  .nav-cta {
+    display: inline-flex;
+    padding: 8px 12px;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+  }
+  /* Page head + article */
+  .page-head { padding: calc(var(--nav-h) + 60px) 0 50px; }
+  .page-head h1 { font-size: clamp(28px, 8vw, 40px); }
+  .page-head .updated { font-size: 10px; letter-spacing: 0.18em; }
+  .article { padding: 30px 0 80px; }
+  .article > section { padding: 36px 0; }
+  .article h2 { font-size: 11px; letter-spacing: 0.24em; margin-bottom: 24px; }
+  .article h3 { font-size: 11px; letter-spacing: 0.18em; margin: 28px 0 12px; }
+  .article p, .article li { font-size: 14.5px; line-height: 1.8; }
+  .article table { font-size: 13px; }
+  .article thead th { font-size: 9.5px; padding: 12px 12px 12px 0; }
+  .article tbody td { padding: 12px 12px 12px 0; }
+  /* Footer — extra bottom space so theme toggle never overlaps */
+  .footer { padding: 60px 0 90px; }
+  .footer-logo { font-size: 24px; letter-spacing: 0.42em; text-indent: 0.42em; }
+  .footer-tagline { font-size: 14.5px; margin-bottom: 44px; }
+  .footer-socials { gap: 22px; margin-bottom: 44px; }
+  .footer-links { gap: 14px 22px; }
+  .footer-copy { font-size: 9.5px; }
+  /* Theme toggle */
+  .theme-toggle { bottom: 18px; right: 18px; width: 48px; height: 48px; }
+  .theme-icon { width: 18px; height: 18px; }
+}
+
+@media (max-width: 380px) {
+  .nav-logo { font-size: 13.5px; letter-spacing: 0.28em; }
+  .lang-switch { font-size: 9.5px; gap: 6px; }
+  .nav-cta { padding: 7px 10px; font-size: 8.5px; letter-spacing: 0.12em; }
+  .page-head h1 { font-size: 26px; }
+}
+
+.article h3 {
+  font-family: 'Host Grotesk', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text);
+  opacity: 0.9;
+  margin: 36px 0 16px;
+}
+.article h3:first-child { margin-top: 4px; }
+.article table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  font-family: 'Host Grotesk', sans-serif;
+  font-size: 14px;
+}
+.article thead th {
+  text-align: left;
+  padding: 14px 18px 14px 0;
+  font-weight: 500;
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border-bottom: 1px solid var(--accent);
+}
+.article tbody td {
+  padding: 14px 18px 14px 0;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  opacity: 0.85;
+  vertical-align: top;
+}
+.article tbody tr:last-child td { border-bottom: none; }
+.article tbody td:first-child {
+  font-weight: 400;
+  color: var(--text);
+  opacity: 1;
+  width: 40%;
+}
+</style>
+<script>
+(function(){try{var p=new URLSearchParams(location.search);var t=p.get('theme'),l=p.get('lang');if(t==='light'){document.documentElement.setAttribute('data-theme','light');var m=document.getElementById('meta-color-scheme');if(m)m.setAttribute('content','light');}if(l==='en'||l==='fr'){document.documentElement.setAttribute('data-lang',l);document.documentElement.setAttribute('lang',l);}}catch(e){}})();
+</script>
+
+  <!-- SEO -->
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://soren-paris.fr/cgv.html" />
+  <meta property="og:type"        content="website" />
+  <meta property="og:site_name"   content="SOREN" />
+  <meta property="og:title"       content="CGV — SOREN" />
+  <meta property="og:description" content="Conditions Generales de Vente SOREN. Parfums roll-on sans alcool formules a Paris. Informations sur la commande, la livraison et les retours." />
+  <meta property="og:url"         content="https://soren-paris.fr/cgv.html" />
+  <meta property="og:image"       content="https://soren-paris.fr/images/blog-image-1.png" />
+  <meta property="og:locale"      content="fr_FR" />
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="CGV — SOREN" />
+  <meta name="twitter:description" content="Conditions Generales de Vente SOREN. Parfums roll-on sans alcool formules a Paris. Informations sur la commande, la livraison et les retours." />
+  <meta name="twitter:image"       content="https://soren-paris.fr/images/blog-image-1.png" />
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+<nav class="nav" id="nav">
+  <div class="lang-switch">
+    <button class="lang-btn active" data-lang="fr">FR</button>
+    <span class="lang-sep">/</span>
+    <button class="lang-btn" data-lang="en">EN</button>
+  </div>
+  <a href="index.html" class="nav-logo">SOREN</a>
+  <a href="formulaire.html" class="nav-cta" data-cta data-i18n="nav.cta">Entrer dans le cercle</a>
+</nav>
+<section class="page-head">
+  <div class="container">
+    <span class="label" data-i18n="cv.label">Conditions générales de vente</span>
+    <h1 data-i18n="cv.title">Les règles<br/><em>de la maison.</em></h1>
+    <div class="updated" data-i18n="cv.updated">Applicables à compter du · <span class="placeholder">[DATE]</span></div>
+  </div>
+</section>
+<div class="container">
+  <article class="article">
+
+    <section>
+      <h2 data-i18n="cv.a1.h">Article 1 — Objet et champ d'application</h2>
+      <p data-i18n="cv.a1.p1">Les présentes Conditions Générales de Vente (CGV) régissent les ventes de produits cosmétiques effectuées par <span class="placeholder">[NOM DE LA SOCIÉTÉ]</span> via le site internet <span class="placeholder">[URL DU SITE]</span> à destination de tout consommateur, professionnel ou particulier, situé en France ou à l'international.</p>
+      <p data-i18n="cv.a1.p2">Tout achat effectué sur le site implique l'acceptation pleine et entière des présentes CGV.</p>
+    </section>
+
+    <section>
+      <h2 data-i18n="cv.a2.h">Article 2 — Produits</h2>
+      <p data-i18n="cv.a2.p1"><strong>SOREN</strong> commercialise des parfums roll-on sans alcool, formulés à partir d'ingrédients déclarés sur l'étiquette.</p>
+      <h3 data-i18n="cv.a2.refs.h">Références disponibles</h3>
+      <ul data-i18n="cv.a2.refs.list">
+        <li>PLAISIR INNOCENT — Roll-on 10ml</li>
+        <li>DÉSIR COUPABLE — Roll-on 10ml</li>
+      </ul>
+      <p data-i18n="cv.a2.compliance">Conformément à la réglementation européenne sur les produits cosmétiques (Règlement CE n°1223/2009), nos produits :</p>
+      <ul data-i18n="cv.a2.compliance.list">
+        <li>Ont fait l'objet d'une évaluation de sécurité par un évaluateur certifié</li>
+        <li>Disposent d'un Dossier d'Information Produit (DIP)</li>
+        <li>Sont notifiés sur le portail CPNP (Cosmetic Products Notification Portal)</li>
+        <li>Portent une liste INCI complète sur leur étiquette</li>
+      </ul>
+      <p data-i18n="cv.a2.visuals">Les photographies des produits sont aussi fidèles que possible. De légères variations de couleur peuvent apparaître selon les paramètres d'affichage de votre écran.</p>
+    </section>
+
+    <section>
+      <h2 data-i18n="cv.a3.h">Article 3 — Prix</h2>
+      <p data-i18n="cv.a3.p1">Les prix sont indiqués en euros (€) toutes taxes comprises (TTC).</p>
+      <p data-i18n="cv.a3.p2"><span class="placeholder">[NOM DE LA SOCIÉTÉ]</span> se réserve le droit de modifier ses prix à tout moment. Les produits sont facturés sur la base des tarifs en vigueur au moment de la validation de la commande.</p>
+      <p data-i18n="cv.a3.shipping"><strong>Frais de livraison :</strong> calculés et affichés avant la validation de la commande.</p>
+      <p data-i18n="cv.a3.customs">Pour les commandes hors Union Européenne, des droits de douane ou taxes locales peuvent s'appliquer. Ces frais sont à la charge du client.</p>
+    </section>
+
+    <section>
+      <h2 data-i18n="cv.a4.h">Article 4 — Commande</h2>
+      <h3 data-i18n="cv.a4.process.h">Processus de commande</h3>
+      <ul data-i18n="cv.a4.process.list">
+        <li>Sélection du ou des produits</li>
+        <li>Ajout au panier</li>
+        <li>Renseignement des informations de livraison</li>
+        <li>Choix du mode de paiement</li>
+        <li>Validation et paiement</li>
+        <li>Confirmation par email</li>
+      </ul>
+      <p data-i18n="cv.a4.p1">La vente est définitivement conclue après confirmation du paiement. Un email de confirmation est envoyé à l'adresse renseignée lors de la commande.</p>
+      <p data-i18n="cv.a4.p2"><span class="placeholder">[NOM DE LA SOCIÉTÉ]</span> se réserve le droit d'annuler toute commande en cas de stock insuffisant ou de problème de paiement, avec remboursement intégral sous 14 jours.</p>
+    </section>
+
+    <section>
+      <h2 data-i18n="cv.a5.h">Article 5 — Paiement</h2>
+      <p data-i18n="cv.a5.p1">Les paiements sont sécurisés via <span class="placeholder">[PRESTATAIRE DE PAIEMENT — ex : Stripe]</span>.</p>
+      <h3 data-i18n="cv.a5.methods.h">Moyens de paiement acceptés</h3>
+      <ul data-i18n="cv.a5.methods.list">
+        <li>Carte bancaire (Visa, Mastercard, American Express)</li>
+        <li><span class="placeholder">[Autres moyens selon prestataire]</span></li>
+      </ul>
+      <p data-i18n="cv.a5.security">Les données bancaires ne transitent pas par les serveurs de SOREN. Le paiement est entièrement géré par <span class="placeholder">[PRESTATAIRE DE PAIEMENT]</span>, certifié PCI-DSS.</p>
+    </section>
+
+    <section>
+      <h2 data-i18n="cv.a6.h">Article 6 — Livraison</h2>
+      <p data-i18n="cv.a6.zones"><strong>Zones de livraison :</strong> France métropolitaine, Union Européenne et international.</p>
+      <h3 data-i18n="cv.a6.delays.h">Délais indicatifs</h3>
+      <table>
+        <thead>
+          <tr><th data-i18n="cv.a6.tbl.zone">Zone</th><th data-i18n="cv.a6.tbl.delay">Délai estimé</th></tr>
+        </thead>
+        <tbody data-i18n="cv.a6.tbl.rows">
+          <tr><td>France métropolitaine</td><td>2 à 5 jours ouvrés</td></tr>
+          <tr><td>Union Européenne</td><td>5 à 10 jours ouvrés</td></tr>
+          <tr><td>International</td><td>7 à 21 jours ouvrés</td></tr>
+        </tbody>
+      </table>
+      <p data-i18n="cv.a6.indicative">Ces délais courent à compter de la confirmation de l'expédition. Ils sont donnés à titre indicatif et ne constituent pas un engagement contractuel.</p>
+      <p data-i18n="cv.a6.contact">En cas de retard de livraison, contactez-nous à <a href="mailto:contact@soren-paris.com">contact@soren-paris.com</a>.</p>
+      <p data-i18n="cv.a6.risk"><strong>Transfert des risques :</strong> Le transfert de risques s'opère au moment de la livraison au client.</p>
+    </section>
+
+    <section>
+      <h2 data-i18n="cv.a7.h">Article 7 — Droit de rétractation</h2>
+      <p data-i18n="cv.a7.p1">Conformément à la <strong>Directive européenne 2011/83/UE</strong> et aux articles L.221-18 et suivants du Code de la consommation, vous disposez d'un <strong>délai de 14 jours</strong> à compter de la réception de votre commande pour exercer votre droit de rétractation, sans avoir à justifier votre décision.</p>
+      <h3 data-i18n="cv.a7.exceptions.h">Exceptions au droit de rétractation</h3>
+      <p data-i18n="cv.a7.exceptions.p">Conformément à l'article L.221-28 du Code de la consommation, le droit de rétractation ne peut être exercé pour les produits descellés ou ouverts après livraison pour des raisons d'hygiène ou de protection de la santé. Cela inclut tout roll-on dont le sceau d'inviolabilité aurait été retiré.</p>
+      <h3 data-i18n="cv.a7.exercise.h">Pour exercer votre droit de rétractation</h3>
+      <p data-i18n="cv.a7.exercise.p">Contactez-nous par email à <a href="mailto:contact@soren-paris.com">contact@soren-paris.com</a> en indiquant votre numéro de commande et votre intention de vous rétracter.</p>
+      <h3 data-i18n="cv.a7.refund.h">Remboursement</h3>
+      <p data-i18n="cv.a7.refund.p">En cas de rétractation valide, le remboursement sera effectué sous <strong>14 jours</strong> à compter de la réception du produit retourné, via le même moyen de paiement utilisé lors de l'achat.</p>
+      <p data-i18n="cv.a7.return">Les frais de retour sont à la charge du client sauf en cas de produit défectueux ou d'erreur de notre part.</p>
+    </section>
+
+    <section>
+      <h2 data-i18n="cv.a8.h">Article 8 — Garanties légales</h2>
+      <p data-i18n="cv.a8.intro">Conformément aux articles L.217-4 et suivants du Code de la consommation, nos produits bénéficient :</p>
+      <p data-i18n="cv.a8.conformity"><strong>Garantie légale de conformité :</strong> 2 ans à compter de la livraison. En cas de défaut de conformité, vous pouvez demander la réparation ou le remplacement du produit, ou à défaut un remboursement.</p>
+      <p data-i18n="cv.a8.hidden"><strong>Garantie contre les vices cachés :</strong> articles 1641 et suivants du Code civil.</p>
+    </section>
+
+    <section>
+      <h2 data-i18n="cv.a9.h">Article 9 — Réglementation cosmétique</h2>
+      <p data-i18n="cv.a9.intro">Les produits SOREN sont conformes au <strong>Règlement (CE) n°1223/2009</strong> relatif aux produits cosmétiques.</p>
+      <p data-i18n="cv.a9.each">Chaque produit dispose :</p>
+      <ul data-i18n="cv.a9.list">
+        <li>D'une liste INCI complète sur l'étiquette</li>
+        <li>D'un numéro de lot</li>
+        <li>D'une date de durabilité minimale (DDM) ou période après ouverture (PAO)</li>
+        <li>D'un Dossier d'Information Produit (DIP)</li>
+        <li>D'une notification CPNP</li>
+      </ul>
+      <h3 data-i18n="cv.a9.precautions.h">Précautions d'usage</h3>
+      <ul data-i18n="cv.a9.precautions.list">
+        <li>Usage externe uniquement</li>
+        <li>Tenir hors de portée des enfants</li>
+        <li>Éviter le contact avec les yeux</li>
+        <li>En cas de réaction cutanée, cesser l'utilisation et consulter un médecin</li>
+        <li>Conserver à l'abri de la chaleur et de la lumière directe</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 data-i18n="cv.a10.h">Article 10 — Responsabilité</h2>
+      <p data-i18n="cv.a10.p1">La responsabilité de <span class="placeholder">[NOM DE LA SOCIÉTÉ]</span> ne saurait être engagée en cas de mauvaise utilisation du produit, d'utilisation non conforme aux recommandations ou d'allergie à un ingrédient déclaré sur l'étiquette.</p>
+      <p data-i18n="cv.a10.p2">Il appartient au client de vérifier la liste complète des ingrédients avant utilisation, notamment en cas d'allergie ou d'hypersensibilité connue.</p>
+    </section>
+
+    <section>
+      <h2 data-i18n="cv.a11.h">Article 11 — Service client</h2>
+      <p data-i18n="cv.a11.intro">Pour toute question ou réclamation :</p>
+      <p data-i18n="cv.a11.email"><strong>Email :</strong> <a href="mailto:contact@soren-paris.com">contact@soren-paris.com</a><br/>
+      <strong>Délai de réponse :</strong> sous 48h ouvrées</p>
+      <p data-i18n="cv.a11.mediation">En cas de litige non résolu, vous pouvez recourir à la médiation de la consommation. Le médiateur compétent est : <span class="placeholder">[NOM DU MÉDIATEUR — ex : Médiation e-commerce, FEVAD]</span>.</p>
+    </section>
+
+    <section>
+      <h2 data-i18n="cv.a12.h">Article 12 — Droit applicable et juridiction</h2>
+      <p data-i18n="cv.a12.p1">Les présentes CGV sont soumises au <strong>droit français</strong>.</p>
+      <p data-i18n="cv.a12.p2">En cas de litige, les parties s'efforceront de trouver une solution amiable. À défaut, les tribunaux compétents seront ceux du ressort du siège social de <span class="placeholder">[NOM DE LA SOCIÉTÉ]</span>.</p>
+      <p data-i18n="cv.a12.eu">Pour les consommateurs de l'Union Européenne, la plateforme de règlement en ligne des litiges de la Commission Européenne est accessible à : <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">ec.europa.eu/consumers/odr</a></p>
+    </section>
+
+    <section>
+      <h2 data-i18n="cv.a13.h">Article 13 — Modification des CGV</h2>
+      <p data-i18n="cv.a13.p"><span class="placeholder">[NOM DE LA SOCIÉTÉ]</span> se réserve le droit de modifier les présentes CGV à tout moment. Les CGV applicables sont celles en vigueur à la date de la commande.</p>
+    </section>
+
+    <section>
+      <p data-i18n="cv.footer"><em>Dernière mise à jour : <span class="placeholder">[DATE]</span></em><br/>
+      <em><span class="placeholder">[NOM DE LA SOCIÉTÉ]</span> — <span class="placeholder">[ADRESSE]</span> — <a href="mailto:contact@soren-paris.com">contact@soren-paris.com</a></em></p>
+    </section>
+  </article>
+</div>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-logo">SOREN</div>
+    <div class="footer-tagline" data-i18n="foo.tagline">Tu sais ce qu'il y a dedans.</div>
+    <div class="footer-socials">
+      <a href="https://www.youtube.com/@Soren-paris" target="_blank" rel="noopener" data-cta aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+      <a href="https://www.tiktok.com/@soren_paris" target="_blank" rel="noopener" data-cta aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43V8.69a8.16 8.16 0 0 0 4.77 1.52V6.77a4.85 4.85 0 0 1-1.84-.08z"/></svg></a>
+      <a href="https://www.instagram.com/sore.nparis/" target="_blank" rel="noopener" data-cta aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
+    </div>
+    <div class="footer-links">
+      <a href="mentions-legales.html" data-cta data-i18n="foo.legal">Mentions légales</a>
+      <a href="cgv.html" data-cta data-i18n="foo.terms">CGV</a>
+      <a href="contact.html" data-cta data-i18n="foo.contact">Contact</a>
+    </div>
+    <div class="footer-copy">© 2026 SOREN</div>
+  </div>
+  <button class="theme-toggle" id="themeToggle" data-cta aria-label="Toggle theme">
+    <svg class="theme-icon icon-sun" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+    <svg class="theme-icon icon-moon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+    </svg>
+  </button>
+</footer>
+<script>
+const i18n = {"fr": {"nav.cta": "Entrer dans le cercle", "foo.tagline": "Tu sais ce qu'il y a dedans.", "foo.legal": "Mentions légales", "foo.terms": "CGV", "foo.contact": "Contact", "cv.label": "Conditions générales de vente", "cv.title": "Les règles<br/><em>de la maison.</em>", "cv.updated": "Applicables à compter du · <span class=\"placeholder\">[DATE]</span>", "cv.a1.h": "Article 1 — Objet et champ d'application", "cv.a1.p1": "Les présentes Conditions Générales de Vente (CGV) régissent les ventes de produits cosmétiques effectuées par <span class=\"placeholder\">[NOM DE LA SOCIÉTÉ]</span> via le site internet <span class=\"placeholder\">[URL DU SITE]</span> à destination de tout consommateur, professionnel ou particulier, situé en France ou à l'international.", "cv.a1.p2": "Tout achat effectué sur le site implique l'acceptation pleine et entière des présentes CGV.", "cv.a2.h": "Article 2 — Produits", "cv.a2.p1": "<strong>SOREN</strong> commercialise des parfums roll-on sans alcool, formulés à partir d'ingrédients déclarés sur l'étiquette.", "cv.a2.refs.h": "Références disponibles", "cv.a2.refs.list": "<li>PLAISIR INNOCENT — Roll-on 10ml</li><li>DÉSIR COUPABLE — Roll-on 10ml</li>", "cv.a2.compliance": "Conformément à la réglementation européenne sur les produits cosmétiques (Règlement CE n°1223/2009), nos produits :", "cv.a2.compliance.list": "<li>Ont fait l'objet d'une évaluation de sécurité par un évaluateur certifié</li><li>Disposent d'un Dossier d'Information Produit (DIP)</li><li>Sont notifiés sur le portail CPNP (Cosmetic Products Notification Portal)</li><li>Portent une liste INCI complète sur leur étiquette</li>", "cv.a2.visuals": "Les photographies des produits sont aussi fidèles que possible. De légères variations de couleur peuvent apparaître selon les paramètres d'affichage de votre écran.", "cv.a3.h": "Article 3 — Prix", "cv.a3.p1": "Les prix sont indiqués en euros (€) toutes taxes comprises (TTC).", "cv.a3.p2": "<span class=\"placeholder\">[NOM DE LA SOCIÉTÉ]</span> se réserve le droit de modifier ses prix à tout moment. Les produits sont facturés sur la base des tarifs en vigueur au moment de la validation de la commande.", "cv.a3.shipping": "<strong>Frais de livraison :</strong> calculés et affichés avant la validation de la commande.", "cv.a3.customs": "Pour les commandes hors Union Européenne, des droits de douane ou taxes locales peuvent s'appliquer. Ces frais sont à la charge du client.", "cv.a4.h": "Article 4 — Commande", "cv.a4.process.h": "Processus de commande", "cv.a4.process.list": "<li>Sélection du ou des produits</li><li>Ajout au panier</li><li>Renseignement des informations de livraison</li><li>Choix du mode de paiement</li><li>Validation et paiement</li><li>Confirmation par email</li>", "cv.a4.p1": "La vente est définitivement conclue après confirmation du paiement. Un email de confirmation est envoyé à l'adresse renseignée lors de la commande.", "cv.a4.p2": "<span class=\"placeholder\">[NOM DE LA SOCIÉTÉ]</span> se réserve le droit d'annuler toute commande en cas de stock insuffisant ou de problème de paiement, avec remboursement intégral sous 14 jours.", "cv.a5.h": "Article 5 — Paiement", "cv.a5.p1": "Les paiements sont sécurisés via <span class=\"placeholder\">[PRESTATAIRE DE PAIEMENT — ex : Stripe]</span>.", "cv.a5.methods.h": "Moyens de paiement acceptés", "cv.a5.methods.list": "<li>Carte bancaire (Visa, Mastercard, American Express)</li><li><span class=\"placeholder\">[Autres moyens selon prestataire]</span></li>", "cv.a5.security": "Les données bancaires ne transitent pas par les serveurs de SOREN. Le paiement est entièrement géré par <span class=\"placeholder\">[PRESTATAIRE DE PAIEMENT]</span>, certifié PCI-DSS.", "cv.a6.h": "Article 6 — Livraison", "cv.a6.zones": "<strong>Zones de livraison :</strong> France métropolitaine, Union Européenne et international.", "cv.a6.delays.h": "Délais indicatifs", "cv.a6.tbl.zone": "Zone", "cv.a6.tbl.delay": "Délai estimé", "cv.a6.tbl.rows": "<tr><td>France métropolitaine</td><td>2 à 5 jours ouvrés</td></tr><tr><td>Union Européenne</td><td>5 à 10 jours ouvrés</td></tr><tr><td>International</td><td>7 à 21 jours ouvrés</td></tr>", "cv.a6.indicative": "Ces délais courent à compter de la confirmation de l'expédition. Ils sont donnés à titre indicatif et ne constituent pas un engagement contractuel.", "cv.a6.contact": "En cas de retard de livraison, contactez-nous à <a href=\"mailto:contact@soren-paris.com\">contact@soren-paris.com</a>.", "cv.a6.risk": "<strong>Transfert des risques :</strong> Le transfert de risques s'opère au moment de la livraison au client.", "cv.a7.h": "Article 7 — Droit de rétractation", "cv.a7.p1": "Conformément à la <strong>Directive européenne 2011/83/UE</strong> et aux articles L.221-18 et suivants du Code de la consommation, vous disposez d'un <strong>délai de 14 jours</strong> à compter de la réception de votre commande pour exercer votre droit de rétractation, sans avoir à justifier votre décision.", "cv.a7.exceptions.h": "Exceptions au droit de rétractation", "cv.a7.exceptions.p": "Conformément à l'article L.221-28 du Code de la consommation, le droit de rétractation ne peut être exercé pour les produits descellés ou ouverts après livraison pour des raisons d'hygiène ou de protection de la santé. Cela inclut tout roll-on dont le sceau d'inviolabilité aurait été retiré.", "cv.a7.exercise.h": "Pour exercer votre droit de rétractation", "cv.a7.exercise.p": "Contactez-nous par email à <a href=\"mailto:contact@soren-paris.com\">contact@soren-paris.com</a> en indiquant votre numéro de commande et votre intention de vous rétracter.", "cv.a7.refund.h": "Remboursement", "cv.a7.refund.p": "En cas de rétractation valide, le remboursement sera effectué sous <strong>14 jours</strong> à compter de la réception du produit retourné, via le même moyen de paiement utilisé lors de l'achat.", "cv.a7.return": "Les frais de retour sont à la charge du client sauf en cas de produit défectueux ou d'erreur de notre part.", "cv.a8.h": "Article 8 — Garanties légales", "cv.a8.intro": "Conformément aux articles L.217-4 et suivants du Code de la consommation, nos produits bénéficient :", "cv.a8.conformity": "<strong>Garantie légale de conformité :</strong> 2 ans à compter de la livraison. En cas de défaut de conformité, vous pouvez demander la réparation ou le remplacement du produit, ou à défaut un remboursement.", "cv.a8.hidden": "<strong>Garantie contre les vices cachés :</strong> articles 1641 et suivants du Code civil.", "cv.a9.h": "Article 9 — Réglementation cosmétique", "cv.a9.intro": "Les produits SOREN sont conformes au <strong>Règlement (CE) n°1223/2009</strong> relatif aux produits cosmétiques.", "cv.a9.each": "Chaque produit dispose :", "cv.a9.list": "<li>D'une liste INCI complète sur l'étiquette</li><li>D'un numéro de lot</li><li>D'une date de durabilité minimale (DDM) ou période après ouverture (PAO)</li><li>D'un Dossier d'Information Produit (DIP)</li><li>D'une notification CPNP</li>", "cv.a9.precautions.h": "Précautions d'usage", "cv.a9.precautions.list": "<li>Usage externe uniquement</li><li>Tenir hors de portée des enfants</li><li>Éviter le contact avec les yeux</li><li>En cas de réaction cutanée, cesser l'utilisation et consulter un médecin</li><li>Conserver à l'abri de la chaleur et de la lumière directe</li>", "cv.a10.h": "Article 10 — Responsabilité", "cv.a10.p1": "La responsabilité de <span class=\"placeholder\">[NOM DE LA SOCIÉTÉ]</span> ne saurait être engagée en cas de mauvaise utilisation du produit, d'utilisation non conforme aux recommandations ou d'allergie à un ingrédient déclaré sur l'étiquette.", "cv.a10.p2": "Il appartient au client de vérifier la liste complète des ingrédients avant utilisation, notamment en cas d'allergie ou d'hypersensibilité connue.", "cv.a11.h": "Article 11 — Service client", "cv.a11.intro": "Pour toute question ou réclamation :", "cv.a11.email": "<strong>Email :</strong> <a href=\"mailto:contact@soren-paris.com\">contact@soren-paris.com</a><br/><strong>Délai de réponse :</strong> sous 48h ouvrées", "cv.a11.mediation": "En cas de litige non résolu, vous pouvez recourir à la médiation de la consommation. Le médiateur compétent est : <span class=\"placeholder\">[NOM DU MÉDIATEUR — ex : Médiation e-commerce, FEVAD]</span>.", "cv.a12.h": "Article 12 — Droit applicable et juridiction", "cv.a12.p1": "Les présentes CGV sont soumises au <strong>droit français</strong>.", "cv.a12.p2": "En cas de litige, les parties s'efforceront de trouver une solution amiable. À défaut, les tribunaux compétents seront ceux du ressort du siège social de <span class=\"placeholder\">[NOM DE LA SOCIÉTÉ]</span>.", "cv.a12.eu": "Pour les consommateurs de l'Union Européenne, la plateforme de règlement en ligne des litiges de la Commission Européenne est accessible à : <a href=\"https://ec.europa.eu/consumers/odr\" target=\"_blank\" rel=\"noopener\">ec.europa.eu/consumers/odr</a>", "cv.a13.h": "Article 13 — Modification des CGV", "cv.a13.p": "<span class=\"placeholder\">[NOM DE LA SOCIÉTÉ]</span> se réserve le droit de modifier les présentes CGV à tout moment. Les CGV applicables sont celles en vigueur à la date de la commande.", "cv.footer": "<em>Dernière mise à jour : <span class=\"placeholder\">[DATE]</span></em><br/><em><span class=\"placeholder\">[NOM DE LA SOCIÉTÉ]</span> — <span class=\"placeholder\">[ADRESSE]</span> — <a href=\"mailto:contact@soren-paris.com\">contact@soren-paris.com</a></em>"}, "en": {"nav.cta": "Enter the circle", "foo.tagline": "You know what's in it.", "foo.legal": "Legal", "foo.terms": "Terms", "foo.contact": "Contact", "cv.label": "Terms of sale", "cv.title": "The rules<br/><em>of the house.</em>", "cv.updated": "In effect from · <span class=\"placeholder\">[DATE]</span>", "cv.a1.h": "Article 1 — Purpose and scope", "cv.a1.p1": "These Terms of Sale govern the sale of cosmetic products by <span class=\"placeholder\">[COMPANY NAME]</span> via the website <span class=\"placeholder\">[SITE URL]</span> to any consumer, professional or individual, located in France or internationally.", "cv.a1.p2": "Any purchase made on the site implies full and complete acceptance of these terms.", "cv.a2.h": "Article 2 — Products", "cv.a2.p1": "<strong>SOREN</strong> sells alcohol-free roll-on perfumes, formulated from ingredients declared on the label.", "cv.a2.refs.h": "Available references", "cv.a2.refs.list": "<li>PLAISIR INNOCENT — 10ml roll-on</li><li>DÉSIR COUPABLE — 10ml roll-on</li>", "cv.a2.compliance": "In accordance with the European regulation on cosmetic products (EC Regulation No. 1223/2009), our products:", "cv.a2.compliance.list": "<li>Have undergone a safety assessment by a certified evaluator</li><li>Have a Product Information File (PIF)</li><li>Are notified on the CPNP portal (Cosmetic Products Notification Portal)</li><li>Display a complete INCI list on their label</li>", "cv.a2.visuals": "Product photographs are as faithful as possible. Slight color variations may appear depending on your screen settings.", "cv.a3.h": "Article 3 — Price", "cv.a3.p1": "Prices are shown in euros (€) including all taxes (VAT).", "cv.a3.p2": "<span class=\"placeholder\">[COMPANY NAME]</span> reserves the right to modify its prices at any time. Products are invoiced based on the rates in effect when the order is validated.", "cv.a3.shipping": "<strong>Shipping fees:</strong> calculated and displayed before order validation.", "cv.a3.customs": "For orders outside the European Union, customs duties or local taxes may apply. These fees are the customer's responsibility.", "cv.a4.h": "Article 4 — Order", "cv.a4.process.h": "Order process", "cv.a4.process.list": "<li>Selection of product(s)</li><li>Adding to cart</li><li>Entering shipping information</li><li>Choosing payment method</li><li>Validation and payment</li><li>Email confirmation</li>", "cv.a4.p1": "The sale is definitively concluded upon payment confirmation. A confirmation email is sent to the address provided during the order.", "cv.a4.p2": "<span class=\"placeholder\">[COMPANY NAME]</span> reserves the right to cancel any order in case of insufficient stock or payment issues, with full refund within 14 days.", "cv.a5.h": "Article 5 — Payment", "cv.a5.p1": "Payments are secured via <span class=\"placeholder\">[PAYMENT PROVIDER — e.g. Stripe]</span>.", "cv.a5.methods.h": "Accepted payment methods", "cv.a5.methods.list": "<li>Credit card (Visa, Mastercard, American Express)</li><li><span class=\"placeholder\">[Other methods depending on provider]</span></li>", "cv.a5.security": "Bank data does not transit through SOREN servers. Payment is entirely handled by <span class=\"placeholder\">[PAYMENT PROVIDER]</span>, PCI-DSS certified.", "cv.a6.h": "Article 6 — Delivery", "cv.a6.zones": "<strong>Delivery zones:</strong> Metropolitan France, European Union and international.", "cv.a6.delays.h": "Estimated delivery times", "cv.a6.tbl.zone": "Zone", "cv.a6.tbl.delay": "Estimated time", "cv.a6.tbl.rows": "<tr><td>Metropolitan France</td><td>2 to 5 business days</td></tr><tr><td>European Union</td><td>5 to 10 business days</td></tr><tr><td>International</td><td>7 to 21 business days</td></tr>", "cv.a6.indicative": "These times start from shipping confirmation. They are indicative and do not constitute a contractual commitment.", "cv.a6.contact": "In case of delivery delay, contact us at <a href=\"mailto:contact@soren-paris.com\">contact@soren-paris.com</a>.", "cv.a6.risk": "<strong>Transfer of risks:</strong> The transfer of risks occurs at the time of delivery to the customer.", "cv.a7.h": "Article 7 — Right of withdrawal", "cv.a7.p1": "In accordance with <strong>European Directive 2011/83/EU</strong> and articles L.221-18 et seq. of the French Consumer Code, you have a <strong>period of 14 days</strong> from receipt of your order to exercise your right of withdrawal, without having to justify your decision.", "cv.a7.exceptions.h": "Exceptions to the right of withdrawal", "cv.a7.exceptions.p": "In accordance with article L.221-28 of the French Consumer Code, the right of withdrawal cannot be exercised for products unsealed or opened after delivery for reasons of hygiene or health protection. This includes any roll-on whose tamper-evident seal has been removed.", "cv.a7.exercise.h": "To exercise your right of withdrawal", "cv.a7.exercise.p": "Contact us by email at <a href=\"mailto:contact@soren-paris.com\">contact@soren-paris.com</a> indicating your order number and your intention to withdraw.", "cv.a7.refund.h": "Refund", "cv.a7.refund.p": "In case of valid withdrawal, the refund will be made within <strong>14 days</strong> from receipt of the returned product, via the same payment method used at purchase.", "cv.a7.return": "Return shipping costs are the customer's responsibility unless the product is defective or we made an error.", "cv.a8.h": "Article 8 — Legal warranties", "cv.a8.intro": "In accordance with articles L.217-4 et seq. of the French Consumer Code, our products benefit from:", "cv.a8.conformity": "<strong>Legal warranty of conformity:</strong> 2 years from delivery. In case of non-conformity, you may request repair or replacement of the product, or failing that, a refund.", "cv.a8.hidden": "<strong>Hidden defects warranty:</strong> articles 1641 et seq. of the French Civil Code.", "cv.a9.h": "Article 9 — Cosmetic regulation", "cv.a9.intro": "SOREN products comply with <strong>EC Regulation No. 1223/2009</strong> on cosmetic products.", "cv.a9.each": "Each product has:", "cv.a9.list": "<li>A complete INCI list on the label</li><li>A batch number</li><li>A minimum durability date (BBD) or period after opening (PAO)</li><li>A Product Information File (PIF)</li><li>A CPNP notification</li>", "cv.a9.precautions.h": "Usage precautions", "cv.a9.precautions.list": "<li>External use only</li><li>Keep out of reach of children</li><li>Avoid contact with eyes</li><li>In case of skin reaction, stop use and consult a doctor</li><li>Store away from heat and direct light</li>", "cv.a10.h": "Article 10 — Liability", "cv.a10.p1": "<span class=\"placeholder\">[COMPANY NAME]</span> cannot be held liable for misuse of the product, use not in accordance with recommendations, or allergy to an ingredient declared on the label.", "cv.a10.p2": "It is the customer's responsibility to check the complete list of ingredients before use, especially in case of known allergy or hypersensitivity.", "cv.a11.h": "Article 11 — Customer service", "cv.a11.intro": "For any question or claim:", "cv.a11.email": "<strong>Email:</strong> <a href=\"mailto:contact@soren-paris.com\">contact@soren-paris.com</a><br/><strong>Response time:</strong> within 48 business hours", "cv.a11.mediation": "In case of unresolved dispute, you may use consumer mediation. The competent mediator is: <span class=\"placeholder\">[MEDIATOR NAME — e.g. Médiation e-commerce, FEVAD]</span>.", "cv.a12.h": "Article 12 — Applicable law and jurisdiction", "cv.a12.p1": "These terms are governed by <strong>French law</strong>.", "cv.a12.p2": "In case of dispute, the parties shall endeavor to find an amicable solution. Failing that, the competent courts shall be those of the registered office of <span class=\"placeholder\">[COMPANY NAME]</span>.", "cv.a12.eu": "For European Union consumers, the European Commission online dispute resolution platform is available at: <a href=\"https://ec.europa.eu/consumers/odr\" target=\"_blank\" rel=\"noopener\">ec.europa.eu/consumers/odr</a>", "cv.a13.h": "Article 13 — Modification of terms", "cv.a13.p": "<span class=\"placeholder\">[COMPANY NAME]</span> reserves the right to modify these terms at any time. The applicable terms are those in effect on the order date.", "cv.footer": "<em>Last updated: <span class=\"placeholder\">[DATE]</span></em><br/><em><span class=\"placeholder\">[COMPANY NAME]</span> — <span class=\"placeholder\">[ADDRESS]</span> — <a href=\"mailto:contact@soren-paris.com\">contact@soren-paris.com</a></em>"}};
+
+const cursor = document.getElementById('cursor');
+let mouseX = 0, mouseY = 0, curX = 0, curY = 0;
+document.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; });
+function loopCursor() { curX += (mouseX - curX) * 0.18; curY += (mouseY - curY) * 0.18; cursor.style.transform = `translate(${curX}px, ${curY}px) translate(-50%, -50%)`; requestAnimationFrame(loopCursor); }
+loopCursor();
+const cursorEnter = () => cursor.classList.add('is-hover');
+const cursorLeave = () => cursor.classList.remove('is-hover');
+function bindCursor() {
+  document.querySelectorAll('[data-cta], a, button, .lang-btn, input, textarea').forEach(el => {
+    el.addEventListener('mouseenter', cursorEnter);
+    el.addEventListener('mouseleave', cursorLeave);
+  });
+}
+bindCursor();
+
+function applyLang(lang) {
+  document.documentElement.setAttribute('data-lang', lang);
+  document.documentElement.setAttribute('lang', lang);
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+  document.querySelectorAll('[data-i18n], [data-i18n-html], [data-i18n-placeholder]').forEach(el => {
+    const key = el.dataset.i18n || el.dataset.i18nHtml || el.dataset.i18nPlaceholder;
+    const val = i18n[lang]?.[key];
+    if (val === undefined) return;
+    if (el.dataset.i18nPlaceholder) el.placeholder = val;
+    else el.innerHTML = val;
+  });
+  const params = new URLSearchParams(window.location.search);
+  params.set('lang', lang);
+  window.history.replaceState(null, '', window.location.pathname + '?' + params.toString());
+  tagLinksWithLang(lang);
+  bindCursor();
+}
+function tagLinksWithLang(lang) {
+  const theme = document.documentElement.getAttribute('data-theme');
+  document.querySelectorAll('a[href]').forEach(a => {
+    const href = a.getAttribute('href');
+    if (!href || href.startsWith('#') || /^(https?:|mailto:|tel:)/.test(href)) return;
+    try {
+      const url = new URL(href, window.location.href);
+      url.searchParams.set('lang', lang);
+      if (theme === 'light') url.searchParams.set('theme', 'light');
+      else url.searchParams.delete('theme');
+      a.setAttribute('href', url.pathname.split('/').pop() + url.search + url.hash);
+    } catch (e) {}
+  });
+}
+document.querySelectorAll('.lang-btn').forEach(btn => btn.addEventListener('click', () => applyLang(btn.dataset.lang)));
+
+const themeToggle = document.getElementById('themeToggle');
+if (themeToggle) {
+  themeToggle.addEventListener('click', () => {
+    try {
+      const current = document.documentElement.getAttribute('data-theme') || 'dark';
+      const next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      themeToggle.classList.add('is-spinning');
+      setTimeout(() => themeToggle.classList.remove('is-spinning'), 700);
+      try {
+        const params = new URLSearchParams(window.location.search);
+        params.set('theme', next);
+        window.history.replaceState(null, '', window.location.pathname + '?' + params.toString());
+      } catch(e) {}
+      try { tagLinksWithLang(document.documentElement.getAttribute('data-lang') || 'fr'); } catch(e) {}
+    } catch(e) {}
+  });
+}
+
+try {
+  const _params = new URLSearchParams(window.location.search);
+  if (_params.get('theme') === 'light') document.documentElement.setAttribute('data-theme', 'light');
+  const _urlLang = _params.get('lang');
+  if (_urlLang === 'en' || _urlLang === 'fr') applyLang(_urlLang);
+  else tagLinksWithLang('fr');
+} catch(e) { try { tagLinksWithLang('fr'); } catch(e2){} }
+
+</script>
+</body>
+</html>
+
+
+
+
+
+

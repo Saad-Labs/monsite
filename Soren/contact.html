@@ -1,0 +1,860 @@
+﻿<!DOCTYPE html>
+<html lang="fr" data-lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#0D0D0B" media="(prefers-color-scheme: dark)" />
+<meta name="theme-color" content="#F0EBE1" media="(prefers-color-scheme: light)" />
+<meta name="color-scheme" content="dark" id="meta-color-scheme" />
+  <meta name="description" content="Contacte SOREN. Une question sur nos parfums, un partenariat ou une demande presse ? Ecris-nous a contact.sorenparis@gmail.com." />
+<title>Contact — SOREN</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Host+Grotesk:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --bg: #0D0D0B;
+  --bg-deep: #0D0D0B;
+  --bg-card: #0D0D0B;
+  --bg-card-elev: #0D0D0B;
+  --text: #F0EBE1;
+  --accent: #C4A8B4;
+  --text-muted: color-mix(in srgb, var(--text) 55%, transparent);
+  --border: color-mix(in srgb, var(--text) 12%, transparent);
+  --shadow-strong: rgba(0, 0, 0, 0.55);
+  --grain-opacity: 0.5;
+  --nav-h: 64px;
+  color-scheme: dark;
+}
+[data-theme="light"] {
+  --bg: #F0EBE1;
+  --bg-deep: #F0EBE1;
+  --bg-card: #F0EBE1;
+  --bg-card-elev: #F0EBE1;
+  --text: #0D0D0B;
+  --accent: #B48F9F;
+  --text-muted: rgba(13, 13, 11, 0.55);
+  --border: rgba(13, 13, 11, 0.12);
+  --shadow-strong: rgba(40, 30, 25, 0.12);
+  --grain-opacity: 0.25;
+  color-scheme: light;
+}
+html { background: var(--bg); transition: background 0.7s cubic-bezier(0.65, 0, 0.35, 1); }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Host Grotesk', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.7;
+  overflow-x: hidden;
+  cursor: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background 0.7s cubic-bezier(0.65, 0, 0.35, 1), color 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+}
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.94 0 0 0 0 0.92 0 0 0 0 0.88 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9998;
+  opacity: var(--grain-opacity);
+  mix-blend-mode: overlay;
+  transition: opacity 0.7s ease;
+}
+::selection { background: var(--accent); color: var(--bg); }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.1s !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Keyboard navigation */
+:focus { outline: none; }
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+  transition: outline-offset 0.2s ease;
+}
+.nav-cta:focus-visible,
+.cta:focus-visible,
+.theme-toggle:focus-visible { outline-offset: 4px; }
+.lang-btn:focus-visible { outline-offset: 2px; }
+input:focus-visible, textarea:focus-visible { outline: none; }
+
+
+button, a, input, textarea, .cta, .theme-toggle, .nav-cta, .lang-btn {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.display {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+.display-italic {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-style: italic;
+}
+.label {
+  font-family: 'Host Grotesk', sans-serif;
+  font-weight: 400;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* CURSOR */
+.cursor {
+  position: fixed;
+  top: 0; left: 0;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              height 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.35s ease;
+}
+.cursor.is-hover {
+  width: 56px; height: 56px;
+  background: transparent;
+  border: 1px solid var(--accent);
+}
+@media (max-width: 1024px) {
+  body { cursor: auto; }
+  .cursor { display: none; }
+}
+
+/* NAVBAR */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--nav-h);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  padding: 0 40px;
+  z-index: 100;
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.5s ease, color 0.5s ease, border-color 0.5s ease;
+}
+.nav > .lang-switch { justify-self: start; }
+.nav > .nav-logo { justify-self: center; }
+.nav > .nav-cta { justify-self: end; }
+@media (hover: hover) and (pointer: fine) {
+  .nav:hover {
+    background: var(--text);
+    color: var(--bg);
+  }
+  .nav:hover .nav-cta { border-color: var(--bg); color: var(--bg); }
+  .nav:hover .nav-cta:hover { background: var(--bg); color: var(--text); }
+  .nav:hover .lang-btn { color: var(--bg); }
+}
+
+.lang-switch {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: 'Host Grotesk', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+}
+.lang-btn {
+  background: none;
+  border: none;
+  color: var(--text);
+  cursor: none;
+  font-family: inherit;
+  font-size: inherit;
+  letter-spacing: inherit;
+  padding: 4px 0;
+  font-weight: 300;
+  opacity: 0.5;
+  transition: opacity 0.3s ease, color 0.5s ease;
+  text-transform: uppercase;
+}
+.lang-btn:hover { opacity: 0.9; }
+.lang-btn.active { opacity: 1; font-weight: 400; }
+.lang-sep { opacity: 0.3; }
+
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  letter-spacing: 0.46em;
+  font-weight: 400;
+  text-decoration: none;
+  color: inherit;
+  text-indent: 0.46em;
+}
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  padding: 11px 22px;
+  border: 1px solid var(--text);
+  color: var(--text);
+  background: transparent;
+  font-family: 'Host Grotesk', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  cursor: none;
+  text-decoration: none;
+  transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (hover: hover) and (pointer: fine) {
+  .nav-cta:hover {
+    background: var(--text);
+    color: var(--bg);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px color-mix(in srgb, var(--text) 15%, transparent);
+  }
+}
+
+/* PAGE HEAD */
+.page-head {
+  padding: calc(var(--nav-h) + 120px) 0 100px;
+  text-align: center;
+  position: relative;
+}
+.page-head .label { display: inline-block; margin-bottom: 28px; }
+.page-head h1 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: clamp(40px, 5vw, 76px);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.page-head h1 em {
+  font-style: italic;
+}
+.page-head .updated {
+  margin-top: 36px;
+  color: var(--text-muted);
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+/* CONTENT */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 60px;
+}
+.article {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 40px 0 200px;
+}
+.article > section {
+  padding: 56px 0;
+  border-top: 1px solid var(--border);
+}
+.article > section:first-child { border-top: none; padding-top: 24px; }
+.article h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: 13px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 32px;
+  font-style: normal;
+}
+.article p {
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--text);
+  opacity: 0.82;
+  margin-bottom: 18px;
+}
+.article p strong {
+  font-weight: 500;
+  opacity: 1;
+}
+.article p em {
+  font-style: italic;
+  color: var(--text-muted);
+}
+.article a:not(.cta) {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+  transition: border-color 0.3s ease;
+  cursor: none;
+}
+.article a:not(.cta):hover { border-bottom-color: var(--accent); }
+.article ul {
+  list-style: none;
+  margin: 14px 0 22px;
+  padding: 0;
+}
+.article li {
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--text);
+  opacity: 0.82;
+  padding-left: 22px;
+  position: relative;
+  margin-bottom: 6px;
+}
+.article li::before {
+  content: '·';
+  color: var(--accent);
+  position: absolute;
+  left: 8px;
+  font-size: 20px;
+  line-height: 1;
+  top: 4px;
+}
+.article .placeholder {
+  color: var(--accent);
+  font-style: italic;
+  opacity: 0.75;
+}
+
+/* CTA (generic) */
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 32px;
+  border: 1px solid var(--text);
+  color: var(--text);
+  background: transparent;
+  font-family: 'Host Grotesk', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  cursor: none;
+  text-decoration: none;
+  font-weight: 400;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              color 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (hover: hover) and (pointer: fine) {
+  .cta:hover {
+    background: var(--text);
+    color: var(--bg);
+    transform: translateY(-3px);
+    box-shadow: 0 18px 40px color-mix(in srgb, var(--text) 18%, transparent);
+  }
+  .cta:hover .arrow { transform: translateX(6px); }
+}
+.cta:active { transform: scale(0.97); }
+.cta .arrow { transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+
+/* FOOTER */
+.footer {
+  padding: 100px 0 60px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+.footer-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  letter-spacing: 0.5em;
+  margin-bottom: 24px;
+  text-indent: 0.5em;
+}
+.footer-tagline {
+  color: var(--text);
+  opacity: 0.7;
+  margin-bottom: 56px;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 16px;
+}
+.footer-socials {
+  display: flex;
+  justify-content: center;
+  gap: 36px;
+  margin-bottom: 64px;
+}
+.footer-socials a {
+  color: var(--accent);
+  text-decoration: none;
+  cursor: none;
+  transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+}
+.footer-socials a:hover { opacity: 0.65; transform: translateY(-2px); }
+.footer-socials svg { width: 20px; height: 20px; fill: currentColor; display: block; }
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.footer-links a {
+  color: inherit;
+  text-decoration: none;
+  cursor: none;
+  transition: color 0.3s ease;
+}
+.footer-links a:hover { color: var(--text); }
+.footer-copy {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* THEME TOGGLE */
+.theme-toggle {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  color: var(--accent);
+  cursor: none;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition:
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    background 0.7s ease,
+    border-color 0.7s ease,
+    box-shadow 0.5s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+@media (hover: hover) and (pointer: fine) {
+  .theme-toggle:hover {
+    transform: translateY(-3px) scale(1.06);
+    border-color: var(--accent);
+    box-shadow: 0 14px 36px rgba(196, 168, 180, 0.28);
+  }
+}
+.theme-toggle:active { transform: scale(0.92); transition: transform 0.12s ease-out, background 0.7s ease, border-color 0.7s ease; }
+.theme-toggle.is-spinning {
+  transform: rotate(360deg) scale(1.05);
+  transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1),
+              background 0.7s ease,
+              border-color 0.7s ease;
+}
+.theme-icon {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  transition:
+    opacity 0.55s cubic-bezier(0.65, 0, 0.35, 1),
+    transform 0.55s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.icon-sun { opacity: 1; transform: rotate(0deg) scale(1); }
+.icon-moon { opacity: 0; transform: rotate(-90deg) scale(0.4); }
+[data-theme="light"] .icon-sun { opacity: 0; transform: rotate(90deg) scale(0.4); }
+[data-theme="light"] .icon-moon { opacity: 1; transform: rotate(0deg) scale(1); }
+
+@media (max-width: 1024px) {
+  .container { padding: 0 32px; }
+  .nav { padding: 0 24px; }
+  .article { padding: 30px 0 120px; }
+  .page-head { padding: calc(var(--nav-h) + 80px) 0 60px; }
+}
+@media (max-width: 640px) {
+  .container { padding: 0 20px; }
+  /* Navbar — same compact treatment as landing */
+  .nav { padding: 0 14px; height: 56px; }
+  :root { --nav-h: 56px;
+}
+  .nav-logo { font-size: 15px; letter-spacing: 0.34em; text-indent: 0.34em; }
+  .lang-switch { gap: 8px; font-size: 10px; letter-spacing: 0.14em; }
+  .nav-cta {
+    display: inline-flex;
+    padding: 8px 12px;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+  }
+  /* Page head + article */
+  .page-head { padding: calc(var(--nav-h) + 60px) 0 50px; }
+  .page-head h1 { font-size: clamp(28px, 8vw, 40px); }
+  .page-head .updated { font-size: 10px; letter-spacing: 0.18em; }
+  .article { padding: 30px 0 80px; }
+  .article > section { padding: 36px 0; }
+  .article h2 { font-size: 11px; letter-spacing: 0.24em; margin-bottom: 24px; }
+  .article h3 { font-size: 11px; letter-spacing: 0.18em; margin: 28px 0 12px; }
+  .article p, .article li { font-size: 14.5px; line-height: 1.8; }
+  .article table { font-size: 13px; }
+  .article thead th { font-size: 9.5px; padding: 12px 12px 12px 0; }
+  .article tbody td { padding: 12px 12px 12px 0; }
+  /* Footer — extra bottom space so theme toggle never overlaps */
+  .footer { padding: 60px 0 90px; }
+  .footer-logo { font-size: 24px; letter-spacing: 0.42em; text-indent: 0.42em; }
+  .footer-tagline { font-size: 14.5px; margin-bottom: 44px; }
+  .footer-socials { gap: 22px; margin-bottom: 44px; }
+  .footer-links { gap: 14px 22px; }
+  .footer-copy { font-size: 9.5px; }
+  /* Theme toggle */
+  .theme-toggle { bottom: 18px; right: 18px; width: 48px; height: 48px; }
+  .theme-icon { width: 18px; height: 18px; }
+}
+
+@media (max-width: 380px) {
+  .nav-logo { font-size: 13.5px; letter-spacing: 0.28em; }
+  .lang-switch { font-size: 9.5px; gap: 6px; }
+  .nav-cta { padding: 7px 10px; font-size: 8.5px; letter-spacing: 0.12em; }
+  .page-head h1 { font-size: 26px; }
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 100px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px 0 200px;
+}
+.contact-info { display: flex; flex-direction: column; gap: 48px; }
+.contact-info-block .label { display: block; margin-bottom: 16px; }
+.contact-info-block p, .contact-info-block a {
+  font-family: 'Host Grotesk', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text);
+  font-style: normal;
+  border: none !important;
+}
+.contact-info-block a {
+  color: var(--accent);
+  text-decoration: none;
+  cursor: none;
+  transition: opacity 0.3s ease;
+}
+.contact-info-block a:hover { opacity: 0.7; }
+
+.contact-form { display: flex; flex-direction: column; gap: 28px; }
+.contact-form label {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  font-family: 'Host Grotesk', sans-serif;
+  font-size: 16px;
+  padding: 12px 2px;
+  outline: none;
+  cursor: none;
+  resize: vertical;
+  transition: border-color 0.4s ease;
+}
+.contact-form input:focus,
+.contact-form textarea:focus { border-bottom-color: var(--accent); }
+.contact-form textarea { min-height: 120px; }
+.contact-form button {
+  align-self: flex-start;
+  margin-top: 16px;
+  cursor: none;
+}
+@media (max-width: 1024px) {
+  .contact-grid { grid-template-columns: 1fr; gap: 60px; padding-bottom: 120px; }
+}
+</style>
+<script>
+(function(){try{var p=new URLSearchParams(location.search);var t=p.get('theme'),l=p.get('lang');if(t==='light'){document.documentElement.setAttribute('data-theme','light');var m=document.getElementById('meta-color-scheme');if(m)m.setAttribute('content','light');}if(l==='en'||l==='fr'){document.documentElement.setAttribute('data-lang',l);document.documentElement.setAttribute('lang',l);}}catch(e){}})();
+</script>
+
+  <!-- SEO -->
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://soren-paris.fr/contact.html" />
+  <meta property="og:type"        content="website" />
+  <meta property="og:site_name"   content="SOREN" />
+  <meta property="og:title"       content="Contact — SOREN" />
+  <meta property="og:description" content="Contacte SOREN. Une question sur nos parfums, un partenariat ou une demande presse ? Ecris-nous a contact.sorenparis@gmail.com." />
+  <meta property="og:url"         content="https://soren-paris.fr/contact.html" />
+  <meta property="og:image"       content="https://soren-paris.fr/images/blog-image-1.png" />
+  <meta property="og:locale"      content="fr_FR" />
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="Contact — SOREN" />
+  <meta name="twitter:description" content="Contacte SOREN. Une question sur nos parfums, un partenariat ou une demande presse ? Ecris-nous a contact.sorenparis@gmail.com." />
+  <meta name="twitter:image"       content="https://soren-paris.fr/images/blog-image-1.png" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"ContactPage","name":"Contact SOREN","url":"https://soren-paris.fr/contact.html","mainEntity":{"@type":"Organization","name":"SOREN","email":"contact.sorenparis@gmail.com"}}</script>
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+<nav class="nav" id="nav">
+  <div class="lang-switch">
+    <button class="lang-btn active" data-lang="fr">FR</button>
+    <span class="lang-sep">/</span>
+    <button class="lang-btn" data-lang="en">EN</button>
+  </div>
+  <a href="index.html" class="nav-logo">SOREN</a>
+  <a href="formulaire.html" class="nav-cta" data-cta data-i18n="nav.cta">Entrer dans le cercle</a>
+</nav>
+<section class="page-head">
+  <div class="container">
+    <span class="label" data-i18n="ct.label">Contact</span>
+    <h1 data-i18n="ct.title">Écris-nous.<br/><em>On répond.</em></h1>
+  </div>
+</section>
+<div class="container">
+  <div class="contact-grid">
+    <aside class="contact-info">
+      <div class="contact-info-block">
+        <span class="label" data-i18n="ct.email.h">Email</span>
+        <p><a href="mailto:contact.sorenparis@gmail.com">contact.sorenparis@gmail.com</a></p>
+      </div>
+      <div class="contact-info-block">
+        <span class="label" data-i18n="ct.press.h">Presse &amp; partenariats</span>
+        <p><a href="mailto:contact.sorenparis@gmail.com">contact.sorenparis@gmail.com</a></p>
+      </div>
+      <div class="contact-info-block">
+        <span class="label" data-i18n="ct.social.h">Réseaux</span>
+        <p data-i18n="ct.social.p">Le plus rapide, c'est souvent en DM.<br/>Instagram et TikTok @soren.</p>
+      </div>
+      <div class="contact-info-block">
+        <span class="label" data-i18n="ct.delay.h">Délai de réponse</span>
+        <p data-i18n="ct.delay.p">Sous 48 heures ouvrées.<br/>Pas de réponse automatique.</p>
+      </div>
+    </aside>
+
+    <form class="contact-form" id="contactForm">
+      <div>
+        <label for="ct-name" data-i18n="ct.form.name">Ton nom</label>
+        <input type="text" id="ct-name" name="name" required />
+      </div>
+      <div>
+        <label for="ct-email" data-i18n="ct.form.email">Ton email</label>
+        <input type="email" id="ct-email" name="email" required autocomplete="email" />
+      </div>
+      <div>
+        <label for="ct-subject" data-i18n="ct.form.subject">Sujet</label>
+        <input type="text" id="ct-subject" name="subject" />
+      </div>
+      <div>
+        <label for="ct-msg" data-i18n="ct.form.message">Message</label>
+        <textarea id="ct-msg" name="message" required></textarea>
+      </div>
+      <button type="submit" class="cta" data-cta data-i18n-html="ct.form.send">Envoyer <span class="arrow">→</span></button>
+    </form>
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-logo">SOREN</div>
+    <div class="footer-tagline" data-i18n="foo.tagline">Tu sais ce qu'il y a dedans.</div>
+    <div class="footer-socials">
+      <a href="https://www.youtube.com/@Soren-paris" target="_blank" rel="noopener" data-cta aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+      <a href="https://www.tiktok.com/@soren_paris" target="_blank" rel="noopener" data-cta aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43V8.69a8.16 8.16 0 0 0 4.77 1.52V6.77a4.85 4.85 0 0 1-1.84-.08z"/></svg></a>
+      <a href="https://www.instagram.com/sore.nparis/" target="_blank" rel="noopener" data-cta aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
+    </div>
+    <div class="footer-links">
+      <a href="mentions-legales.html" data-cta data-i18n="foo.legal">Mentions légales</a>
+      <a href="cgv.html" data-cta data-i18n="foo.terms">CGV</a>
+      <a href="contact.html" data-cta data-i18n="foo.contact">Contact</a>
+    </div>
+    <div class="footer-copy">© 2026 SOREN</div>
+  </div>
+
+  <button class="theme-toggle" id="themeToggle" data-cta aria-label="Toggle theme">
+    <svg class="theme-icon icon-sun" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+    <svg class="theme-icon icon-moon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+    </svg>
+  </button>
+</footer>
+<script>
+const i18n = {
+  "fr": {
+    "nav.cta": "Entrer dans le cercle",
+    "foo.tagline": "Tu sais ce qu'il y a dedans.",
+    "foo.legal": "Mentions légales",
+    "foo.terms": "CGV",
+    "foo.contact": "Contact",
+    "ct.label": "Contact",
+    "ct.title": "Écris-nous.<br/><em>On répond.</em>",
+    "ct.email.h": "Email",
+    "ct.press.h": "Presse & partenariats",
+    "ct.social.h": "Réseaux",
+    "ct.social.p": "Le plus rapide, c'est souvent en DM.<br/>Instagram et TikTok @soren.",
+    "ct.delay.h": "Délai de réponse",
+    "ct.delay.p": "Sous 48 heures ouvrées.<br/>Pas de réponse automatique.",
+    "ct.form.name": "Ton nom",
+    "ct.form.email": "Ton email",
+    "ct.form.subject": "Sujet",
+    "ct.form.message": "Message",
+    "ct.form.send": "Envoyer <span class=\"arrow\">→</span>"
+  },
+  "en": {
+    "nav.cta": "Enter the circle",
+    "foo.tagline": "You know what's in it.",
+    "foo.legal": "Legal",
+    "foo.terms": "Terms",
+    "foo.contact": "Contact",
+    "ct.label": "Contact",
+    "ct.title": "Write to us.<br/><em>We answer.</em>",
+    "ct.email.h": "Email",
+    "ct.press.h": "Press & partnerships",
+    "ct.social.h": "Socials",
+    "ct.social.p": "The fastest way is usually a DM.<br/>Instagram and TikTok @soren.",
+    "ct.delay.h": "Response time",
+    "ct.delay.p": "Within 48 working hours.<br/>No auto-reply.",
+    "ct.form.name": "Your name",
+    "ct.form.email": "Your email",
+    "ct.form.subject": "Subject",
+    "ct.form.message": "Message",
+    "ct.form.send": "Send <span class=\"arrow\">→</span>"
+  }
+};
+
+/* CURSOR */
+const cursor = document.getElementById('cursor');
+let mouseX = 0, mouseY = 0, curX = 0, curY = 0;
+document.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; });
+function loopCursor() {
+  curX += (mouseX - curX) * 0.18;
+  curY += (mouseY - curY) * 0.18;
+  cursor.style.transform = `translate(${curX}px, ${curY}px) translate(-50%, -50%)`;
+  requestAnimationFrame(loopCursor);
+}
+loopCursor();
+const cursorEnter = () => cursor.classList.add('is-hover');
+const cursorLeave = () => cursor.classList.remove('is-hover');
+function bindCursor() {
+  document.querySelectorAll('[data-cta], a, button, .lang-btn, input, textarea').forEach(el => {
+    el.addEventListener('mouseenter', cursorEnter);
+    el.addEventListener('mouseleave', cursorLeave);
+  });
+}
+bindCursor();
+
+/* LANGUAGE */
+function applyLang(lang) {
+  document.documentElement.setAttribute('data-lang', lang);
+  document.documentElement.setAttribute('lang', lang);
+  document.querySelectorAll('.lang-btn').forEach(b =>
+    b.classList.toggle('active', b.dataset.lang === lang));
+  document.querySelectorAll('[data-i18n], [data-i18n-html], [data-i18n-placeholder]').forEach(el => {
+    const key = el.dataset.i18n || el.dataset.i18nHtml || el.dataset.i18nPlaceholder;
+    const val = i18n[lang]?.[key];
+    if (val === undefined) return;
+    if (el.dataset.i18nPlaceholder) el.placeholder = val;
+    else el.innerHTML = val;
+  });
+  // Persist + propagate
+  const params = new URLSearchParams(window.location.search);
+  params.set('lang', lang);
+  window.history.replaceState(null, '', window.location.pathname + '?' + params.toString());
+  tagLinksWithLang(lang);
+  bindCursor();
+}
+function tagLinksWithLang(lang) {
+  const theme = document.documentElement.getAttribute('data-theme');
+  document.querySelectorAll('a[href]').forEach(a => {
+    const href = a.getAttribute('href');
+    if (!href || href.startsWith('#') || /^(https?:|mailto:|tel:)/.test(href)) return;
+    try {
+      const url = new URL(href, window.location.href);
+      url.searchParams.set('lang', lang);
+      if (theme === 'light') url.searchParams.set('theme', 'light');
+      else url.searchParams.delete('theme');
+      a.setAttribute('href', url.pathname.split('/').pop() + url.search + url.hash);
+    } catch (e) {}
+  });
+}
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+});
+
+/* THEME */
+const themeToggle = document.getElementById('themeToggle');
+if (themeToggle) {
+  themeToggle.addEventListener('click', () => {
+    try {
+      const current = document.documentElement.getAttribute('data-theme') || 'dark';
+      const next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      themeToggle.classList.add('is-spinning');
+      setTimeout(() => themeToggle.classList.remove('is-spinning'), 700);
+      try {
+        const params = new URLSearchParams(window.location.search);
+        params.set('theme', next);
+        window.history.replaceState(null, '', window.location.pathname + '?' + params.toString());
+      } catch(e) {}
+      try { tagLinksWithLang(document.documentElement.getAttribute('data-lang') || 'fr'); } catch(e) {}
+    } catch(e) {}
+  });
+}
+
+/* On load: read URL params */
+try {
+  const _params = new URLSearchParams(window.location.search);
+  const _urlTheme = _params.get('theme');
+  if (_urlTheme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+  const _urlLang = _params.get('lang');
+  if (_urlLang === 'en' || _urlLang === 'fr') applyLang(_urlLang);
+  else tagLinksWithLang('fr');
+} catch(e) { try { tagLinksWithLang('fr'); } catch(e2){} }
+
+document.getElementById('contactForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const btn = e.target.querySelector('button');
+  const orig = btn.innerHTML;
+  btn.innerHTML = (document.documentElement.getAttribute('data-lang') === 'en' ? 'Message sent.' : 'Message envoyé.') + ' <span class="arrow">✓</span>';
+  btn.style.background = 'var(--text)';
+  btn.style.color = 'var(--bg)';
+  setTimeout(() => { e.target.reset(); btn.innerHTML = orig; btn.style.background = ''; btn.style.color = ''; }, 3200);
+});
+</script>
+</body>
+</html>
+
+
+
+
+
+
