@@ -606,6 +606,16 @@
       radial-gradient(circle at 30% 30%, rgba(196, 168, 180, 0.12) 0%, transparent 40%),
       radial-gradient(circle at 70% 70%, rgba(196, 168, 180, 0.06) 0%, transparent 50%);
   }
+  .founders-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    position: relative;
+    z-index: 1;
+    transform: scale(1.0);
+    filter: contrast(1.08) saturate(1.12) brightness(1.02);
+  }
   .founders-photo::after {
     content: 'Loïc & Saadou';
     position: absolute;
@@ -615,7 +625,8 @@
     font-size: 11px;
     letter-spacing: 0.28em;
     text-transform: uppercase;
-    color: var(--text-muted);
+    color: rgba(255,255,255,0.75);
+    z-index: 2;
   }
   .founders-text .label { margin-bottom: 24px; display: block; }
   .founders-text h2 {
@@ -1335,7 +1346,9 @@
 <section class="founders" id="founders">
   <div class="container">
     <div class="founders-grid">
-      <div class="founders-photo reveal"></div>
+      <div class="founders-photo reveal">
+        <img src="images/photo-des-deux-fondateurs.png" alt="Loïc et Saadou, fondateurs de SOREN" loading="lazy" />
+      </div>
 
       <div class="founders-text">
         <span class="label reveal-fast" data-i18n="fou.label">Les fondateurs</span>
