@@ -1117,8 +1117,14 @@
       top: auto;
       left: auto;
       width: 100%;
-      height: auto;          /* full video, fit to width — no crop */
-      object-fit: contain;
+      height: auto;
+      /* Video is 16:9 (1920x1080). Box it to a slightly wider ratio and
+         anchor to the top so cover crops ONLY the bottom ~9% — just enough
+         to clip the MiniMax/Hailuo watermark while keeping the full width
+         and (almost) the full height. No letterbox, no gap. */
+      aspect-ratio: 16 / 8.2;
+      object-fit: cover;
+      object-position: center top;
     }
     .hero-overlay { display: none; }   /* gradient was only to make text legible over the video */
     .hero-content {
