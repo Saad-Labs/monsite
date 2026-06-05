@@ -1103,10 +1103,26 @@
       letter-spacing: 0.1em;
     }
 
-    /* Hero — tighter, smaller bottles */
-    .hero { min-height: 100svh; }
+    /* Hero on phones: show the WHOLE video (fit to width) and stack the
+       text underneath it instead of cropping a 100vh cover. */
+    .hero {
+      height: auto;
+      min-height: 0;
+      padding-top: var(--nav-h);
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .hero-video {
+      position: relative;
+      top: auto;
+      left: auto;
+      width: 100%;
+      height: auto;          /* full video, fit to width — no crop */
+      object-fit: contain;
+    }
+    .hero-overlay { display: none; }   /* gradient was only to make text legible over the video */
     .hero-content {
-      padding: 0 20px 90px;
+      padding: 24px 20px 56px;
       gap: 24px;
       flex-direction: column;
       align-items: flex-start;
@@ -1115,7 +1131,11 @@
     .hero-bottles { gap: 18px; }
     .bottle { width: 105px; }
     .hero-eyebrow {
-      top: calc(var(--nav-h) + 18px);
+      position: static;
+      transform: none;
+      display: block;
+      padding: 14px 20px 0;
+      text-align: center;
       white-space: nowrap;
     }
     .hero-headline {
@@ -1124,8 +1144,7 @@
       margin-bottom: 20px;
     }
     .hero-sub { font-size: 13.5px; line-height: 1.65; }
-    .scroll-hint { bottom: 18px; font-size: 9px; letter-spacing: 0.28em; }
-    .scroll-hint .line { height: 28px; }
+    .scroll-hint { display: none; } /* hero is now content-height, not a full viewport */
 
     /* Duality */
     .duality-bottle-wrap .bottle { width: 165px; }
@@ -1748,17 +1767,23 @@
   /* ──────────────────────────────────────────────────────────────
      SUBTLE PARALLAX on hero bottles while scrolling out
   ────────────────────────────────────────────────────────────── */
-  gsap.to('#heroVideo', {
-    scale: 1.1,
-    opacity: 0.7,
-    ease: 'none',
-    scrollTrigger: {
-      trigger: '#hero',
-      start: 'top top',
-      end: 'bottom top',
-      scrub: 0.6,
-    },
-  });
+  // fromTo + immediateRender:false so the scrub never captures the entrance's
+  // opacity:0 as its start value — otherwise scrolling back to top would snap
+  // the video back to invisible. At progress 0 it's pinned to opacity:1/scale:1.
+  gsap.fromTo('#heroVideo',
+    { scale: 1, opacity: 1 },
+    {
+      scale: 1.1,
+      opacity: 0.7,
+      ease: 'none',
+      immediateRender: false,
+      scrollTrigger: {
+        trigger: '#hero',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: 0.6,
+      },
+    });
   gsap.to('.hero-overlay', {
     opacity: 1.2,
     ease: 'none',
