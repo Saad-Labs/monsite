@@ -368,6 +368,38 @@
     gap: 12vw;
     z-index: 1;
   }
+  .hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* Overscan the bottom: .hero is overflow:hidden, so the MiniMax/Hailuo
+       watermark baked into the video's bottom edge gets clipped off-screen.
+       Top-anchored → never a gap at the top. Percentage-based → responsive-safe. */
+    height: 112%;
+    object-fit: cover;
+    object-position: center top;
+    z-index: 1;
+    will-change: transform, opacity;
+  }
+  /* Hero CTA — frosted glass sitting over the video */
+  .hero-cta-wrap .cta {
+    background: color-mix(in srgb, var(--bg) 32%, transparent);
+    -webkit-backdrop-filter: blur(14px) saturate(1.3);
+    backdrop-filter: blur(14px) saturate(1.3);
+    border-color: color-mix(in srgb, var(--text) 30%, transparent);
+    box-shadow: 0 10px 34px color-mix(in srgb, #000 30%, transparent);
+  }
+  /* On hover the glass CTA fills solid (like the other CTAs) and keeps its
+     label legible — needs to out-specify the .hero-cta-wrap .cta glass bg above. */
+  @media (hover: hover) and (pointer: fine) {
+    .hero-cta-wrap .cta:hover {
+      background: var(--text);
+      color: var(--bg);
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+    }
+  }
   /* Real product photography — base64 inlined for self-contained artifact */
   .bottle {
     width: 150px;
@@ -1276,10 +1308,9 @@
 <section class="hero" id="hero">
   <div class="hero-bg"></div>
 
-  <div class="hero-bottles" id="heroBottles">
-    <div class="bottle bottle--innocent" aria-label="Plaisir Innocent"></div>
-    <div class="bottle bottle--coupable" aria-label="Désir Coupable"></div>
-  </div>
+  <video class="hero-video" id="heroVideo" autoplay loop muted playsinline preload="auto" aria-hidden="true">
+    <source src="images/Timeline%201.mp4" type="video/mp4" />
+  </video>
 
   <div class="hero-overlay"></div>
 
@@ -1593,12 +1624,10 @@
   ────────────────────────────────────────────────────────────── */
   const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-  tl.from('#heroBottles .bottle', {
-    y: 80,
+  tl.from('#heroVideo', {
     opacity: 0,
-    scale: 0.92,
-    duration: 1.6,
-    stagger: 0.18,
+    scale: 1.08,
+    duration: 1.8,
     ease: 'power2.out',
   }, 0.2)
   .from('#heroEyebrow', {
@@ -1719,10 +1748,9 @@
   /* ──────────────────────────────────────────────────────────────
      SUBTLE PARALLAX on hero bottles while scrolling out
   ────────────────────────────────────────────────────────────── */
-  gsap.to('#heroBottles', {
-    y: 140,
-    scale: 0.96,
-    opacity: 0.65,
+  gsap.to('#heroVideo', {
+    scale: 1.1,
+    opacity: 0.7,
     ease: 'none',
     scrollTrigger: {
       trigger: '#hero',
@@ -1741,6 +1769,40 @@
       scrub: 0.6,
     },
   });
+
+  /* ──────────────────────────────────────────────────────────────
+     HERO VIDEO — keep the loop alive after scrolling away & back.
+     Browsers pause off-screen muted-autoplay videos and don't always
+     resume them; re-trigger play() whenever the hero re-enters view.
+  ────────────────────────────────────────────────────────────── */
+  (function keepHeroVideoLooping() {
+    const v = document.getElementById('heroVideo');
+    if (!v) return;
+    const isVisible = () => {
+      const r = v.getBoundingClientRect();
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      return r.bottom > 0 && r.top < vh;
+    };
+    // Resume only when it makes sense (hero on-screen + tab active), so we never
+    // fight the browser's legitimate off-screen/background pausing.
+    const tryPlay = () => {
+      if (document.hidden || !isVisible()) return;
+      if (v.paused || v.ended) {
+        if (v.ended) { try { v.currentTime = 0; } catch (e) {} }
+        const p = v.play();
+        if (p && p.catch) p.catch(() => {});
+      }
+    };
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver((entries) => {
+        entries.forEach((e) => { if (e.isIntersecting) tryPlay(); });
+      }, { threshold: 0.01 }).observe(v);
+    }
+    document.addEventListener('visibilitychange', () => { if (!document.hidden) tryPlay(); });
+    ['ended', 'pause', 'stalled', 'suspend', 'canplay'].forEach((ev) =>
+      v.addEventListener(ev, () => setTimeout(tryPlay, 50)));
+    setInterval(tryPlay, 800); // watchdog: guarantees the loop survives any browser quirk
+  })();
 
   /* ──────────────────────────────────────────────────────────────
      INTERNATIONALIZATION — full FR/EN dictionary
