@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr" data-lang="fr">
 <head>
 <meta charset="UTF-8" />
@@ -779,6 +779,22 @@ button, a, input, textarea, .cta, .theme-toggle, .nav-cta, .lang-btn {
   .article-nav .next-link { text-align: left; }
   .article-nav .next-title { font-size: 18px; }
 }
+
+/* === Propagation: CTA court (mobile) + bouton jour/nuit dans le footer === */
+.theme-toggle{position:relative;top:auto;bottom:auto;left:auto;right:auto;margin:44px auto 0}
+.theme-toggle.is-spinning{transform:none}
+.theme-toggle.is-toggling{animation:theme-pop .6s cubic-bezier(.34,1.56,.64,1),theme-ring .6s ease-out}
+@keyframes theme-pop{0%{transform:scale(1)}30%{transform:scale(.84)}62%{transform:scale(1.12)}100%{transform:scale(1)}}
+@keyframes theme-ring{0%{box-shadow:0 10px 30px rgba(0,0,0,.25),0 0 0 0 rgba(196,168,180,.5)}100%{box-shadow:0 10px 30px rgba(0,0,0,.25),0 0 0 16px rgba(196,168,180,0)}}
+.nav-cta .cta-short{display:none}
+@media(max-width:640px){
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .nav>.nav-logo{position:absolute;left:50%;transform:translateX(-50%);pointer-events:none}
+  .nav-cta{margin-left:auto}
+  .nav-cta .cta-full{display:none}
+  .nav-cta .cta-short{display:inline}
+  .theme-toggle{margin-top:36px}
+}
 </style>
 <script>
 (function(){try{var p=new URLSearchParams(location.search);var t=p.get('theme'),l=p.get('lang');if(t==='light'){document.documentElement.setAttribute('data-theme','light');var m=document.getElementById('meta-color-scheme');if(m)m.setAttribute('content','light');}if(l==='en'||l==='fr'){document.documentElement.setAttribute('data-lang',l);document.documentElement.setAttribute('lang',l);}}catch(e){}})();
@@ -818,7 +834,7 @@ button, a, input, textarea, .cta, .theme-toggle, .nav-cta, .lang-btn {
     <button class="lang-btn" data-lang="en">EN</button>
   </div>
   <a href="index.html" class="nav-logo">SOREN</a>
-  <a href="formulaire.html" class="nav-cta" data-cta data-i18n="nav.cta">Entrer dans le cercle</a>
+  <a href="formulaire.html" class="nav-cta" data-cta data-i18n="nav.cta"><span class="cta-full">Entrer dans le cercle</span><span class="cta-short">Le cercle</span></a>
 </nav>
 <section class="article-hero">
   <div class="container">
@@ -1004,6 +1020,7 @@ try {
 } catch(e) { try { tagLinksWithLang('fr'); } catch(e2){} }
 
 </script>
+<script>(function(){var t=document.getElementById('themeToggle');if(!t)return;t.addEventListener('click',function(){t.classList.remove('is-toggling');void t.offsetWidth;t.classList.add('is-toggling');setTimeout(function(){t.classList.remove('is-toggling')},600);});})();</script>
 </body>
 </html>
 

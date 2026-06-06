@@ -298,6 +298,9 @@
     }
   }
 
+  /* Nav CTA: long label on desktop, short label on phones */
+  .nav-cta .cta-short { display: none; }
+
   /* ──────────────────────────────────────────────────────────────
      GLOBAL CTA STYLE (matches nav rule)
   ────────────────────────────────────────────────────────────── */
@@ -1088,7 +1091,21 @@
   @media (max-width: 640px) {
     .container { padding: 0 20px; }
     /* Navbar — keep all three elements visible, just smaller */
-    .nav { padding: 0 14px; height: 56px; }
+    /* Mobile nav = flexbox so the CTA can never overflow off-screen */
+    .nav {
+      padding: 0 16px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .nav > .nav-logo {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
     :root { --nav-h: 56px;
 }
     .nav-logo {
@@ -1098,10 +1115,12 @@
     }
     .lang-switch { gap: 8px; font-size: 10px; letter-spacing: 0.14em; }
     .nav-cta {
-      padding: 6px 9px;
-      font-size: 8px;
-      letter-spacing: 0.1em;
+      padding: 5px 11px;
+      font-size: 9px;
+      letter-spacing: 0.14em;
     }
+    .nav-cta .cta-full { display: none; }
+    .nav-cta .cta-short { display: inline; }
 
     /* Hero on phones: show the WHOLE video (fit to width) and stack the
        text underneath it instead of cropping a 100vh cover. */
@@ -1153,8 +1172,8 @@
     .scroll-hint { display: none; } /* hero is now content-height, not a full viewport */
 
     /* Duality */
-    .duality-bottle-wrap .bottle { width: 165px; }
-    .duality-bottle-wrap { height: 280px; margin-bottom: 36px; }
+    .duality-bottle-wrap .bottle { width: 135px; }
+    .duality-bottle-wrap { height: 235px; margin-bottom: 36px; }
     .duality-col { padding: 50px 12px; }
     .duality-name { font-size: 11px; margin-bottom: 22px; }
     .duality-tagline { font-size: 22px; margin-bottom: 32px; line-height: 1.25; }
@@ -1190,18 +1209,17 @@
     /* Section paddings — calmer */
     .section-pad, .duality, .founders, .proof, .journal { padding: 90px 0; }
 
-    /* Footer — extra bottom space so theme toggle never overlaps */
-    .footer { padding: 70px 0 90px; }
+    .footer { padding: 70px 0; }
     .footer-logo { font-size: 24px; letter-spacing: 0.42em; text-indent: 0.42em; }
     .footer-tagline { font-size: 14.5px; margin-bottom: 44px; }
     .footer-socials { gap: 22px; margin-bottom: 44px; }
     .footer-links { gap: 14px 22px; }
     .footer-copy { font-size: 9.5px; }
 
-    /* Theme toggle — proper tap target */
+    /* Theme toggle — proper tap target (now centered in footer flow) */
     .theme-toggle {
-      bottom: 18px; right: 18px;
       width: 48px; height: 48px;
+      margin-top: 36px;
     }
     .theme-icon { width: 18px; height: 18px; }
   }
@@ -1209,7 +1227,7 @@
   @media (max-width: 380px) {
     .nav-logo { font-size: 13.5px; letter-spacing: 0.28em; }
     .lang-switch { font-size: 9.5px; gap: 6px; }
-    .nav-cta { padding: 7px 10px; font-size: 8.5px; letter-spacing: 0.12em; }
+    .nav-cta { padding: 4px 9px; font-size: 8.5px; letter-spacing: 0.12em; }
     .hero-headline { font-size: 26px; }
   }
 
@@ -1221,9 +1239,8 @@
      THEME TOGGLE BUTTON
   ────────────────────────────────────────────────────────────── */
   .theme-toggle {
-    position: fixed;
-    bottom: 28px;
-    right: 28px;
+    position: relative;
+    margin: 44px auto 0;
     width: 52px;
     height: 52px;
     border-radius: 50%;
@@ -1258,11 +1275,21 @@
     transform: scale(0.92);
     transition: transform 0.12s ease-out, background 0.7s ease, border-color 0.7s ease;
   }
-  .theme-toggle.is-spinning {
-    transform: rotate(360deg) scale(1.05);
-    transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1),
-                background 0.7s ease,
-                border-color 0.7s ease;
+  /* Apple-style spring bounce + soft glow pulse on click */
+  .theme-toggle.is-toggling {
+    animation:
+      theme-pop  0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
+      theme-ring 0.6s ease-out;
+  }
+  @keyframes theme-pop {
+    0%   { transform: scale(1); }
+    30%  { transform: scale(0.84); }
+    62%  { transform: scale(1.12); }
+    100% { transform: scale(1); }
+  }
+  @keyframes theme-ring {
+    0%   { box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25), 0 0 0 0 rgba(196, 168, 180, 0.5); }
+    100% { box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25), 0 0 0 16px rgba(196, 168, 180, 0); }
   }
   .theme-icon {
     position: absolute;
@@ -1324,7 +1351,7 @@
     <button class="lang-btn" data-lang="en">EN</button>
   </div>
   <a href="index.html" class="nav-logo">SOREN</a>
-  <a href="formulaire.html" class="nav-cta" data-cta data-i18n="nav.cta">Entrer dans le cercle</a>
+  <a href="formulaire.html" class="nav-cta" data-cta data-i18n="nav.cta"><span class="cta-full">Entrer dans le cercle</span><span class="cta-short">Le cercle</span></a>
 </nav>
 
 <!-- ═══════════════════════════════════════════════════════════
@@ -1841,7 +1868,7 @@
   ────────────────────────────────────────────────────────────── */
   const i18n = {
     fr: {
-      'nav.cta': 'Entrer dans le cercle',
+      'nav.cta': '<span class="cta-full">Entrer dans le cercle</span><span class="cta-short">Le cercle</span>',
       'hero.eyebrow': 'Soren · Premier batch',
       'hero.line1': 'Ce que le parfum',
       'hero.line2': "aurait toujours dû être.",
@@ -1906,7 +1933,7 @@
       'foo.contact': 'Contact',
     },
     en: {
-      'nav.cta': 'Enter the circle',
+      'nav.cta': '<span class="cta-full">Enter the circle</span><span class="cta-short">The circle</span>',
       'hero.eyebrow': 'Soren · First batch',
       'hero.line1': 'What perfume',
       'hero.line2': 'should have always been.',
@@ -2102,8 +2129,10 @@
         document.documentElement.setAttribute('data-theme', next);
         const metaCS = document.getElementById('meta-color-scheme');
         if (metaCS) metaCS.setAttribute('content', next);
-        themeToggle.classList.add('is-spinning');
-        setTimeout(() => themeToggle.classList.remove('is-spinning'), 700);
+        themeToggle.classList.remove('is-toggling');
+        void themeToggle.offsetWidth; // reflow so rapid clicks re-trigger the animation
+        themeToggle.classList.add('is-toggling');
+        setTimeout(() => themeToggle.classList.remove('is-toggling'), 600);
         try {
           const params = new URLSearchParams(window.location.search);
           params.set('theme', next);
