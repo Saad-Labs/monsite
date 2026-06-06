@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr" data-lang="fr">
 <head>
 <meta charset="UTF-8" />
@@ -1115,9 +1115,11 @@
     }
     .lang-switch { gap: 8px; font-size: 10px; letter-spacing: 0.14em; }
     .nav-cta {
-      padding: 5px 11px;
-      font-size: 9px;
-      letter-spacing: 0.14em;
+      padding: 4px 12px;
+      font-size: 8.5px;
+      letter-spacing: 0.1em;
+      line-height: 1.18;
+      text-align: center;
     }
     .nav-cta .cta-full { display: none; }
     .nav-cta .cta-short { display: inline; }
@@ -1240,7 +1242,7 @@
   ────────────────────────────────────────────────────────────── */
   .theme-toggle {
     position: relative;
-    margin: 44px auto 0;
+    margin: 44px 0 0 auto;
     width: 52px;
     height: 52px;
     border-radius: 50%;
@@ -1351,7 +1353,7 @@
     <button class="lang-btn" data-lang="en">EN</button>
   </div>
   <a href="index.html" class="nav-logo">SOREN</a>
-  <a href="formulaire.html" class="nav-cta" data-cta data-i18n="nav.cta"><span class="cta-full">Entrer dans le cercle</span><span class="cta-short">Le cercle</span></a>
+  <a href="formulaire.html" class="nav-cta" data-cta data-i18n="nav.cta"><span class="cta-full">Entrer dans le cercle</span><span class="cta-short">Rejoindre<br>le cercle</span></a>
 </nav>
 
 <!-- ═══════════════════════════════════════════════════════════
@@ -1587,8 +1589,6 @@
       <a href="contact.html" data-cta data-i18n="foo.contact">Contact</a>
     </div>
     <div class="footer-copy">© 2026 SOREN</div>
-  </div>
-
   <button class="theme-toggle" id="themeToggle" data-cta aria-label="Toggle day/night mode">
     <svg class="theme-icon icon-sun" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/>
@@ -1598,6 +1598,7 @@
       <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
     </svg>
   </button>
+  </div>
 </footer>
 
 <script>
@@ -1868,7 +1869,7 @@
   ────────────────────────────────────────────────────────────── */
   const i18n = {
     fr: {
-      'nav.cta': '<span class="cta-full">Entrer dans le cercle</span><span class="cta-short">Le cercle</span>',
+      'nav.cta': '<span class="cta-full">Entrer dans le cercle</span><span class="cta-short">Rejoindre<br>le cercle</span>',
       'hero.eyebrow': 'Soren · Premier batch',
       'hero.line1': 'Ce que le parfum',
       'hero.line2': "aurait toujours dû être.",
@@ -1933,7 +1934,7 @@
       'foo.contact': 'Contact',
     },
     en: {
-      'nav.cta': '<span class="cta-full">Enter the circle</span><span class="cta-short">The circle</span>',
+      'nav.cta': '<span class="cta-full">Enter the circle</span><span class="cta-short">Join<br>the circle</span>',
       'hero.eyebrow': 'Soren · First batch',
       'hero.line1': 'What perfume',
       'hero.line2': 'should have always been.',

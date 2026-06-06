@@ -781,7 +781,7 @@ button, a, input, textarea, .cta, .theme-toggle, .nav-cta, .lang-btn {
 }
 
 /* === Propagation: CTA court (mobile) + bouton jour/nuit dans le footer === */
-.theme-toggle{position:relative;top:auto;bottom:auto;left:auto;right:auto;margin:44px auto 0}
+.theme-toggle{position:relative;top:auto;bottom:auto;left:auto;right:auto;margin:44px 0 0 auto}
 .theme-toggle.is-spinning{transform:none}
 .theme-toggle.is-toggling{animation:theme-pop .6s cubic-bezier(.34,1.56,.64,1),theme-ring .6s ease-out}
 @keyframes theme-pop{0%{transform:scale(1)}30%{transform:scale(.84)}62%{transform:scale(1.12)}100%{transform:scale(1)}}
@@ -790,7 +790,7 @@ button, a, input, textarea, .cta, .theme-toggle, .nav-cta, .lang-btn {
 @media(max-width:640px){
   .nav{display:flex;align-items:center;justify-content:space-between;gap:10px}
   .nav>.nav-logo{position:absolute;left:50%;transform:translateX(-50%);pointer-events:none}
-  .nav-cta{margin-left:auto}
+  .nav-cta{margin-left:auto;text-align:center;line-height:1.18;padding-top:4px;padding-bottom:4px}
   .nav-cta .cta-full{display:none}
   .nav-cta .cta-short{display:inline}
   .theme-toggle{margin-top:36px}
@@ -834,7 +834,7 @@ button, a, input, textarea, .cta, .theme-toggle, .nav-cta, .lang-btn {
     <button class="lang-btn" data-lang="en">EN</button>
   </div>
   <a href="index.html" class="nav-logo">SOREN</a>
-  <a href="formulaire.html" class="nav-cta" data-cta data-i18n="nav.cta"><span class="cta-full">Entrer dans le cercle</span><span class="cta-short">Le cercle</span></a>
+  <a href="formulaire.html" class="nav-cta" data-cta data-i18n="nav.cta"><span class="cta-full">Entrer dans le cercle</span><span class="cta-short">Rejoindre<br>le cercle</span></a>
 </nav>
 <section class="article-hero">
   <div class="container">
@@ -930,7 +930,6 @@ button, a, input, textarea, .cta, .theme-toggle, .nav-cta, .lang-btn {
       <a href="contact.html" data-cta data-i18n="foo.contact">Contact</a>
     </div>
     <div class="footer-copy">© 2026 SOREN</div>
-  </div>
   <button class="theme-toggle" id="themeToggle" data-cta aria-label="Toggle theme">
     <svg class="theme-icon icon-sun" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/>
@@ -940,6 +939,7 @@ button, a, input, textarea, .cta, .theme-toggle, .nav-cta, .lang-btn {
       <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
     </svg>
   </button>
+  </div>
 </footer>
 <script>
 const i18n = {"fr": {"nav.cta": "Entrer dans le cercle", "foo.tagline": "Tu sais ce qu'il y a dedans.", "foo.legal": "Mentions légales", "foo.terms": "CGV", "foo.contact": "Contact", "a1.eyebrow": "01 / 03 · Le journal", "a1.title": "Le jour où on a dit <em>non.</em>", "a1.lead": "Il y a des moments dans une vie où une phrase anodine change tout.", "a1.p1": "Pas un grand discours. Pas une révélation. Juste une phrase, lancée en passant, par quelqu'un qui s'y connaît.", "a1.p2": "On était comme d'habitude. On mettait du parfum. Plusieurs fois par jour, comme on le faisait depuis des années. Le parfum, c'était notre truc. Vraiment. Pas juste un flacon posé sur une étagère. Une obsession. Une façon d'entrer dans une pièce. Une façon d'exister.", "a1.p3": "Et puis ce jour-là, un ami nous regarde et dit :", "a1.quote1": "Mets-en pas sur ta barbe. Ça va décolorer ton poil. Y'a trop de produits chimiques dedans.", "a1.s1": "C'est tout.", "a1.s2": "Une phrase.", "a1.s3": "On aurait pu l'ignorer. On ne l'a pas ignorée.", "a1.p4": "Parce que cette phrase a ouvert quelque chose. Une question qu'on n'avait jamais vraiment posée. Si le parfum attaque les poils, qu'est-ce qu'il fait à la peau ? Tous les jours. Plusieurs fois par jour. Sur le cou, sur le poignet, sur la gorge.", "a1.p5": "On a commencé à lire les étiquettes.", "a1.callout": "« Fragrance. »", "a1.p6": "C'est tout ce qu'il y avait d'écrit. Un seul mot pour couvrir des dizaines, parfois des centaines de molécules non déclarées. On nous demandait de faire confiance. De ne pas s'inquiéter. De juste sentir bon et passer à autre chose.", "a1.p7": "On n'a pas réussi à passer à autre chose.", "a1.p8": "Et puis il y avait l'alcool.", "a1.p9": "On est musulmans. Pour nous, l'alcool ne se négocie pas. Pas dans un verre. Pas sur la peau. C'est une conviction. Une ligne qu'on ne franchit pas.", "a1.p10": "Alors on a cherché des alternatives. Les roll-ons traditionnels — sans alcool, huile pure. C'est comme ça que ça a toujours été fait, d'ailleurs. Avant que l'industrie n'industrialise tout, n'uniformise tout, ne mette de l'alcool partout pour que ça sèche plus vite et que les marges soient meilleures.", "a1.p11": "Mais même dans les roll-ons, ils ont fini par en mettre.", "a1.s4": "Même là.", "a1.p12": "On a arrêté de porter du parfum.", "a1.p13": "Pas par choix idéologique. Par épuisement. Parce qu'on ne savait plus quoi mettre sur notre corps sans se poser de questions. Et qu'on refusait de choisir entre sentir bon et être en paix avec ce qu'on est.", "a1.p14": "Pendant des mois, plus rien.", "a1.p15": "Et puis un matin — on ne sait plus exactement lequel — l'un de nous a dit :", "a1.quote2": "Non. Stop. On ne va pas faire sans. On va faire mieux.", "a1.p16": "Ce jour-là, SOREN a commencé.", "a1.p17": "Pas dans un laboratoire. Pas dans une réunion stratégique. Dans une conversation entre deux amis qui en avaient assez d'attendre que quelqu'un d'autre règle leur problème.", "a1.p18": "On a décidé de le régler nous-mêmes.", "a1.nextTitle": "Ce qu'on a refusé de mettre dedans.", "art.signRole": "Fondateurs Soren", "art.back": "← Le journal", "art.nextLabel": "Article suivant"}, "en": {"nav.cta": "Enter the circle", "foo.tagline": "You know what's in it.", "foo.legal": "Legal", "foo.terms": "Terms", "foo.contact": "Contact", "a1.eyebrow": "01 / 03 · The journal", "a1.title": "The day we said <em>no.</em>", "a1.lead": "There are moments in a life when a passing comment changes everything.", "a1.p1": "Not a grand speech. Not a revelation. Just a sentence, tossed out in passing, by someone who knows.", "a1.p2": "We were doing what we always did. Wearing perfume. Several times a day, as we had for years. Perfume was our thing. Truly. Not just a bottle on a shelf. An obsession. A way of entering a room. A way of existing.", "a1.p3": "And then one day, a friend looks at us and says:", "a1.quote1": "Don't put it on your beard. It'll bleach the hair. Too many chemicals in it.", "a1.s1": "That's it.", "a1.s2": "One sentence.", "a1.s3": "We could have ignored it. We didn't.", "a1.p4": "Because that sentence opened something. A question we had never really asked. If perfume attacks beard hair, what is it doing to skin? Every day. Several times a day. On the neck, on the wrist, on the throat.", "a1.p5": "We started reading labels.", "a1.callout": "« Fragrance. »", "a1.p6": "That's all it said. A single word to cover dozens — sometimes hundreds — of undeclared molecules. We were asked to trust. Not to worry. To just smell good and move on.", "a1.p7": "We couldn't move on.", "a1.p8": "And then there was the alcohol.", "a1.p9": "We are Muslim. For us, alcohol is not up for negotiation. Not in a glass. Not on skin. It's a conviction. A line we don't cross.", "a1.p10": "So we looked for alternatives. Traditional roll-ons — alcohol-free, pure oil. That's how it had always been done, anyway. Before the industry industrialized everything, standardized everything, put alcohol everywhere because it dries faster and the margins are better.", "a1.p11": "But even in roll-ons, they ended up adding it.", "a1.s4": "Even there.", "a1.p12": "We stopped wearing perfume.", "a1.p13": "Not as some ideological stand. From exhaustion. Because we no longer knew what to put on our bodies without asking ourselves questions. And we refused to choose between smelling good and being at peace with who we are.", "a1.p14": "For months, nothing.", "a1.p15": "And then one morning — we don't remember which — one of us said:", "a1.quote2": "No. Stop. We're not going without. We're going to do it better.", "a1.p16": "That day, SOREN began.", "a1.p17": "Not in a lab. Not in a strategy meeting. In a conversation between two friends who were tired of waiting for someone else to fix their problem.", "a1.p18": "We decided to fix it ourselves.", "a1.nextTitle": "What we refused to put inside.", "art.signRole": "Soren founders", "art.back": "← The journal", "art.nextLabel": "Next article"}};

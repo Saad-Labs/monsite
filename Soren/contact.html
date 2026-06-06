@@ -604,7 +604,7 @@ button, a, input, textarea, .cta, .theme-toggle, .nav-cta, .lang-btn {
 }
 
 /* === Propagation: CTA court (mobile) + bouton jour/nuit dans le footer === */
-.theme-toggle{position:relative;top:auto;bottom:auto;left:auto;right:auto;margin:44px auto 0}
+.theme-toggle{position:relative;top:auto;bottom:auto;left:auto;right:auto;margin:44px 0 0 auto}
 .theme-toggle.is-spinning{transform:none}
 .theme-toggle.is-toggling{animation:theme-pop .6s cubic-bezier(.34,1.56,.64,1),theme-ring .6s ease-out}
 @keyframes theme-pop{0%{transform:scale(1)}30%{transform:scale(.84)}62%{transform:scale(1.12)}100%{transform:scale(1)}}
@@ -613,7 +613,7 @@ button, a, input, textarea, .cta, .theme-toggle, .nav-cta, .lang-btn {
 @media(max-width:640px){
   .nav{display:flex;align-items:center;justify-content:space-between;gap:10px}
   .nav>.nav-logo{position:absolute;left:50%;transform:translateX(-50%);pointer-events:none}
-  .nav-cta{margin-left:auto}
+  .nav-cta{margin-left:auto;text-align:center;line-height:1.18;padding-top:4px;padding-bottom:4px}
   .nav-cta .cta-full{display:none}
   .nav-cta .cta-short{display:inline}
   .theme-toggle{margin-top:36px}
@@ -657,7 +657,7 @@ button, a, input, textarea, .cta, .theme-toggle, .nav-cta, .lang-btn {
     <button class="lang-btn" data-lang="en">EN</button>
   </div>
   <a href="index.html" class="nav-logo">SOREN</a>
-  <a href="formulaire.html" class="nav-cta" data-cta data-i18n="nav.cta"><span class="cta-full">Entrer dans le cercle</span><span class="cta-short">Le cercle</span></a>
+  <a href="formulaire.html" class="nav-cta" data-cta data-i18n="nav.cta"><span class="cta-full">Entrer dans le cercle</span><span class="cta-short">Rejoindre<br>le cercle</span></a>
 </nav>
 <section class="page-head">
   <div class="container">
@@ -722,8 +722,6 @@ button, a, input, textarea, .cta, .theme-toggle, .nav-cta, .lang-btn {
       <a href="contact.html" data-cta data-i18n="foo.contact">Contact</a>
     </div>
     <div class="footer-copy">© 2026 SOREN</div>
-  </div>
-
   <button class="theme-toggle" id="themeToggle" data-cta aria-label="Toggle theme">
     <svg class="theme-icon icon-sun" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/>
@@ -733,6 +731,7 @@ button, a, input, textarea, .cta, .theme-toggle, .nav-cta, .lang-btn {
       <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
     </svg>
   </button>
+  </div>
 </footer>
 <script>
 const i18n = {

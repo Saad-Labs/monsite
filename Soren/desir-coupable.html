@@ -700,7 +700,7 @@ body::before {
 @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
 
 /* === Propagation: CTA court (mobile) + bouton jour/nuit dans le footer === */
-.theme-toggle{position:relative;top:auto;bottom:auto;left:auto;right:auto;margin:44px auto 0}
+.theme-toggle{position:relative;top:auto;bottom:auto;left:auto;right:auto;margin:44px 0 0 auto}
 .theme-toggle.is-spinning{transform:none}
 .theme-toggle.is-toggling{animation:theme-pop .6s cubic-bezier(.34,1.56,.64,1),theme-ring .6s ease-out}
 @keyframes theme-pop{0%{transform:scale(1)}30%{transform:scale(.84)}62%{transform:scale(1.12)}100%{transform:scale(1)}}
@@ -709,7 +709,7 @@ body::before {
 @media(max-width:640px){
   .nav{display:flex;align-items:center;justify-content:space-between;gap:10px}
   .nav>.nav-logo{position:absolute;left:50%;transform:translateX(-50%);pointer-events:none}
-  .nav-cta{margin-left:auto}
+  .nav-cta{margin-left:auto;text-align:center;line-height:1.18;padding-top:4px;padding-bottom:4px}
   .nav-cta .cta-full{display:none}
   .nav-cta .cta-short{display:inline}
   .theme-toggle{margin-top:36px}
@@ -753,7 +753,7 @@ body::before {
     <button class="lang-btn" data-lang="en">EN</button>
   </div>
   <a href="index.html" class="nav-logo">SOREN</a>
-  <a href="formulaire.html" class="nav-cta" data-cta data-i18n="nav.cta"><span class="cta-full">Entrer dans le cercle</span><span class="cta-short">Le cercle</span></a>
+  <a href="formulaire.html" class="nav-cta" data-cta data-i18n="nav.cta"><span class="cta-full">Entrer dans le cercle</span><span class="cta-short">Rejoindre<br>le cercle</span></a>
 </nav>
 <section class="product-hero">
   <div class="hero-carousel">
@@ -831,7 +831,6 @@ body::before {
       <a href="contact.html" data-cta data-i18n="foo.contact">Contact</a>
     </div>
     <div class="footer-copy">© 2026 SOREN</div>
-  </div>
   <button class="theme-toggle" id="themeToggle" data-cta aria-label="Toggle theme">
     <svg class="theme-icon icon-sun" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/>
@@ -841,6 +840,7 @@ body::before {
       <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
     </svg>
   </button>
+  </div>
 </footer>
 <script>
 const i18n = {"fr": {"nav.cta": "Entrer dans le cercle", "foo.tagline": "Tu sais ce qu'il y a dedans.", "foo.legal": "Mentions légales", "foo.terms": "CGV", "foo.contact": "Contact", "p2.eyebrow": "SOREN · Roll-on", "p2.name": "DÉSIR COUPABLE", "p2.essence": "Le parfum de ceux qui assument.", "p2.meta": "15ml <span class=\"meta-dot\">·</span> 6 ingrédients <span class=\"meta-dot\">·</span> Sans alcool", "p2.ingredients": "Huile de jojoba · Pamplemousse · Santal · Cèdre · Ambroxan · Ethyl vanilline", "p2.cta": "Je plaide coupable", "p2.s.lead": "Il y a des soirs où quelque chose s'est cassé.", "p2.s.p1": "Tu sais pas trop quoi. Tu sais juste que t'as besoin de partir. Vite.", "p2.s.p2": "Tu prends les clés. La GT3 RS est froide dans l'allée. Tu montes. La portière claque — ce son sec, précis, qui dit que t'es seul maintenant. Tu tournes la clé. Le moteur à plat arrière s'éveille derrière ta nuque. Pas un ronronnement. Une déclaration.", "p2.s.p3": "Tu enclenches la première. Tu pars.", "p2.s.p4": "L'Autobahn s'ouvre devant toi comme une phrase qui finit pas. Pas de limite. Pas de feux. Juste le bitume noir sous les phares, les lignes blanches qui deviennent du flou, et ce son qui monte, monte, monte jusqu'à remplir tout l'habitacle.", "p2.s.p5": "À cette vitesse les pensées peuvent plus suivre. Elles restent quelque part sur l'asphalte derrière toi. Les épaules descendent. La mâchoire se desserre. T'as plus qu'une chose à faire.", "p2.s.callout": "Rouler.", "p2.s.p6": "Et pendant ces quelques kilomètres suspendus entre la nuit et toi — tu existes. Vraiment. Pleinement. Sans excuse.", "p2.s.p7": "C'est ça DÉSIR COUPABLE.", "p2.s.p8": "Le plaisir qu'on prend même quand c'est pas le bon moment. Surtout parce que c'est pas le bon moment.", "p2.s.end": "Certains plaisirs ne se justifient pas.<br/>Ils se vivent. C'est tout.", "p2.c.intro": "Tu sais ce qu'il y a dedans.<br/>Maintenant tu sais ce que ça fait.<br/>Il reste une chose à faire.", "p2.c.placeholder": "Ton email", "p2.c.cta": "Entrer dans le cercle <span class=\"arrow\">→</span>", "p2.c.micro": "Premier batch limité.<br/>Notifié 48h avant tout le monde.", "p2.o.eyebrow": "Pas totalement coupable.", "p2.o.link": "Découvrir PLAISIR INNOCENT"}, "en": {"nav.cta": "Enter the circle", "foo.tagline": "You know what's in it.", "foo.legal": "Legal", "foo.terms": "Terms", "foo.contact": "Contact", "p2.eyebrow": "SOREN · Roll-on", "p2.name": "DÉSIR COUPABLE", "p2.essence": "The perfume of those who own it.", "p2.meta": "15ml <span class=\"meta-dot\">·</span> 6 ingredients <span class=\"meta-dot\">·</span> Alcohol-free", "p2.ingredients": "Jojoba oil · Grapefruit · Sandalwood · Cedar · Ambroxan · Ethyl vanillin", "p2.cta": "I plead guilty", "p2.s.lead": "Some nights, something has broken.", "p2.s.p1": "You're not quite sure what. You just know you need to leave. Fast.", "p2.s.p2": "You grab the keys. The GT3 RS sits cold in the driveway. You get in. The door slams — that dry, precise sound that says you're alone now. You turn the key. The flat-six wakes up behind your neck. Not a purr. A declaration.", "p2.s.p3": "You shift into first. You leave.", "p2.s.p4": "The Autobahn opens before you like a sentence that doesn't end. No limit. No lights. Just black asphalt under the headlights, the white lines turning to blur, and that sound rising, rising, rising until it fills the whole cabin.", "p2.s.p5": "At this speed thoughts can't keep up. They stay somewhere on the asphalt behind you. The shoulders drop. The jaw loosens. You have only one thing left to do.", "p2.s.callout": "Drive.", "p2.s.p6": "And during these few kilometers suspended between the night and you — you exist. Truly. Fully. Without apology.", "p2.s.p7": "That's DÉSIR COUPABLE.", "p2.s.p8": "The pleasure you take even when it isn't the right time. Especially because it isn't.", "p2.s.end": "Some pleasures don't justify themselves.<br/>They are lived. That's all.", "p2.c.intro": "You know what's in it.<br/>Now you know what it does.<br/>One thing left to do.", "p2.c.placeholder": "Your email", "p2.c.cta": "Enter the circle <span class=\"arrow\">→</span>", "p2.c.micro": "First batch is limited.<br/>Notified 48h before everyone.", "p2.o.eyebrow": "Not totally guilty.", "p2.o.link": "Discover PLAISIR INNOCENT"}};
