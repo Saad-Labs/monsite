@@ -222,39 +222,33 @@ button, a, input, textarea, .cta, .theme-toggle, .nav-cta, .lang-btn {
    HUB HERO
 ───────────────────────────────────────────── */
 .hub-hero {
-  padding: calc(var(--nav-h) + 160px) 0 140px;
+  padding: calc(var(--nav-h) + 100px) 0 80px;
   text-align: center;
   position: relative;
 }
-.hub-hero .label { display: inline-block; margin-bottom: 36px; }
+.hub-hero .label { display: inline-block; margin-bottom: 28px; }
 .hub-hero h1 {
   font-family: 'Playfair Display', serif;
   font-weight: 400;
-  font-size: clamp(56px, 7vw, 104px);
-  line-height: 1.0;
+  font-size: clamp(44px, 5vw, 72px);
+  line-height: 1.05;
   letter-spacing: -0.02em;
-  margin-bottom: 44px;
+  margin-bottom: 32px;
 }
 .hub-hero .sub {
   font-size: 15px;
   line-height: 1.8;
   color: var(--text);
-  opacity: 0.55;
+  opacity: 0.62;
   max-width: 360px;
   margin: 0 auto;
-}
-.hub-divider {
-  width: 1px;
-  height: 80px;
-  background: var(--border);
-  margin: 60px auto 0;
 }
 
 /* ─────────────────────────────────────────────
    FEATURED ARTICLE
 ───────────────────────────────────────────── */
 .hub-featured {
-  padding: 100px 0 80px;
+  padding: 80px 0 60px;
   border-top: 1px solid var(--border);
 }
 .hub-featured-inner {
@@ -262,6 +256,7 @@ button, a, input, textarea, .cta, .theme-toggle, .nav-cta, .lang-btn {
   grid-template-columns: 1fr 1fr;
   gap: 80px;
   align-items: center;
+  min-height: unset;
 }
 .hub-featured-img {
   aspect-ratio: 4 / 3;
@@ -289,9 +284,9 @@ button, a, input, textarea, .cta, .theme-toggle, .nav-cta, .lang-btn {
 .hub-featured-title {
   font-family: 'Playfair Display', serif;
   font-weight: 400;
-  font-size: clamp(30px, 3.2vw, 48px);
+  font-size: clamp(28px, 2.8vw, 42px);
   line-height: 1.1;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
   color: var(--text);
 }
 .hub-featured-lead {
@@ -331,7 +326,11 @@ button, a, input, textarea, .cta, .theme-toggle, .nav-cta, .lang-btn {
   grid-template-columns: 1fr 1fr;
   gap: 60px;
 }
-.hub-card { cursor: none; }
+.hub-card {
+  cursor: none;
+  display: block;
+  min-height: unset;
+}
 .hub-card-img {
   aspect-ratio: 16 / 10;
   overflow: hidden;
@@ -422,7 +421,7 @@ button, a, input, textarea, .cta, .theme-toggle, .nav-cta, .lang-btn {
   .nav > .nav-cta { justify-self: auto; margin-left: auto; text-align: center; line-height: 1.18; padding-top: 4px; padding-bottom: 4px; }
   .nav-logo { font-size: 15px; letter-spacing: 0.34em; text-indent: 0.34em; }
   .lang-switch { gap: 8px; font-size: 10px; letter-spacing: 0.14em; }
-  .nav-cta { padding: 8px 12px; font-size: 9px; letter-spacing: 0.14em; }
+  .nav-cta { font-size: 9px; letter-spacing: 0.14em; }
   .nav-cta .cta-full { display: none; }
   .nav-cta .cta-short { display: inline; }
   .hub-hero { padding: calc(var(--nav-h) + 80px) 0 80px; }
@@ -485,7 +484,6 @@ button, a, input, textarea, .cta, .theme-toggle, .nav-cta, .lang-btn {
     <span class="label" data-i18n="hub.label">Le journal</span>
     <h1 data-i18n="hub.title">On construit<br>en public.</h1>
     <p class="sub" data-i18n="hub.sub">Parce que vous méritez de savoir<br>comment c'est fait.</p>
-    <div class="hub-divider"></div>
   </div>
 </section>
 
