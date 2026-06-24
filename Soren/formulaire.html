@@ -601,7 +601,10 @@
 
   /* ── RESPONSIVE ── */
   @media (max-width: 640px) {
-    .nav { padding: 0 20px; }
+    .nav { padding: 0 14px; height: 56px; }
+    :root { --nav-h: 56px; }
+    .nav-logo { font-size: 15px; letter-spacing: 0.34em; text-indent: 0.34em; }
+    .lang-switch { gap: 8px; font-size: 10px; letter-spacing: 0.14em; }
     .form-main { padding: calc(var(--nav-h) + 56px) 20px 80px; }
     .form-title { font-size: clamp(36px, 12vw, 52px); }
     .form-sub { font-size: 15px; margin-bottom: 44px; }
@@ -614,6 +617,8 @@
     .nav-back { display: none; }
   }
   @media (max-width: 380px) {
+    .nav-logo { font-size: 13.5px; letter-spacing: 0.28em; }
+    .lang-switch { font-size: 9.5px; gap: 6px; }
     .pref-card { padding: 16px 12px 14px; font-size: 10px; }
     .pref-card-hint { font-size: 11px; }
   }
