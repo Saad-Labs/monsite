@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr" data-lang="fr">
 <head>
 <meta charset="UTF-8" />
@@ -120,12 +120,12 @@
   }
   .nav > .lang-switch { justify-self: start; }
   .nav > .nav-logo   { justify-self: center; }
-  .nav > .nav-back   { justify-self: end; }
+  .nav > .nav-cta   { justify-self: end; }
 
   @media (hover: hover) and (pointer: fine) {
     .nav:hover { background: var(--text); color: var(--bg); }
-    .nav:hover .nav-back { border-color: var(--bg); color: var(--bg); }
-    .nav:hover .nav-back:hover { background: var(--bg); color: var(--text); }
+    .nav:hover .nav-cta { border-color: var(--bg); color: var(--bg); }
+    .nav:hover .nav-cta:hover { background: var(--bg); color: var(--text); }
     .nav:hover .lang-btn { color: var(--bg); }
     .nav:hover .lang-btn.active { color: var(--bg); }
   }
@@ -160,7 +160,7 @@
     text-indent: 0.46em;
   }
 
-  .nav-back {
+  .nav-cta {
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -614,7 +614,7 @@
     .footer-logo { font-size: 24px; letter-spacing: 0.42em; text-indent: 0.42em; }
     .container { padding: 0 20px; }
     .theme-toggle { bottom: 24px; right: 20px; width: 44px; height: 44px; }
-    .nav-back { display: none; }
+    .nav-cta { display: none; }
   }
   @media (max-width: 380px) {
     .nav-logo { font-size: 13.5px; letter-spacing: 0.28em; }
@@ -631,9 +631,7 @@
 @keyframes theme-ring{0%{box-shadow:0 10px 30px rgba(0,0,0,.25),0 0 0 0 rgba(196,168,180,.5)}100%{box-shadow:0 10px 30px rgba(0,0,0,.25),0 0 0 16px rgba(196,168,180,0)}}
 .nav-cta .cta-short{display:none}
 @media(max-width:640px){
-  .nav{display:flex;align-items:center;justify-content:space-between;gap:10px}
-  .nav>.nav-logo{position:absolute;left:50%;transform:translateX(-50%);pointer-events:none}
-  .nav-cta{margin-left:auto;text-align:center;line-height:1.18;padding-top:4px;padding-bottom:4px}
+  .nav-cta{text-align:center;line-height:1.18;padding-top:4px;padding-bottom:4px}
   .nav-cta .cta-full{display:none}
   .nav-cta .cta-short{display:inline}
   .theme-toggle{margin-top:36px}
@@ -681,7 +679,7 @@
     <button class="lang-btn" data-lang="en">EN</button>
   </div>
   <a href="index.html" class="nav-logo">SOREN</a>
-  <a href="index.html" class="nav-back" data-cta data-i18n="form.back">← Accueil</a>
+  <a href="formulaire.html" class="nav-cta" data-cta><span class="cta-full">Entrer dans le cercle</span><span class="cta-short">Rejoindre<br>le cercle</span></a>
 </nav>
 
 <!-- ═══ MAIN ═══ -->
