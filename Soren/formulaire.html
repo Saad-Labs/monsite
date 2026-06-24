@@ -665,38 +665,34 @@
 }
 .lang-switch {
   display: flex; align-items: center; gap: 14px;
-  font-family: 'Host Grotesk', sans-serif;
-  font-size: 12px; letter-spacing: 0.18em;
+  font-family: 'Host Grotesk', sans-serif; font-size: 12px; letter-spacing: 0.18em;
 }
 .lang-btn {
   background: none; border: none; color: var(--text); cursor: none;
   font-family: inherit; font-size: inherit; letter-spacing: inherit;
   padding: 4px 0; font-weight: 300; opacity: 0.5;
-  transition: opacity 0.3s ease, color 0.5s ease;
-  text-transform: uppercase; min-height: unset; display: inline;
+  transition: opacity 0.3s ease, color 0.5s ease; text-transform: uppercase;
 }
 .lang-btn:hover { opacity: 0.9; }
 .lang-btn.active { opacity: 1; font-weight: 400; }
 .lang-sep { opacity: 0.3; }
 .nav-logo {
-  font-family: 'Playfair Display', serif;
-  font-size: 24px; letter-spacing: 0.46em; font-weight: 400;
+  font-family: 'Playfair Display', serif; font-size: 24px;
+  letter-spacing: 0.46em; font-weight: 400;
   text-decoration: none; color: inherit; text-indent: 0.46em;
-  display: inline; min-height: unset;
 }
 .nav-cta {
-  display: inline-flex; align-items: center;
-  padding: 11px 22px;
+  display: inline-flex; align-items: center; padding: 11px 22px;
   border: 1px solid var(--text); color: var(--text); background: transparent;
-  font-family: 'Host Grotesk', sans-serif;
-  font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
-  cursor: none; text-decoration: none; min-height: unset;
+  font-family: 'Host Grotesk', sans-serif; font-size: 11px;
+  letter-spacing: 0.24em; text-transform: uppercase;
+  cursor: none; text-decoration: none;
   transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative; overflow: hidden;
 }
 @media (hover: hover) and (pointer: fine) {
   .nav-cta:hover {
-    background: var(--text); color: var(--bg);
-    transform: translateY(-2px);
+    background: var(--text); color: var(--bg); transform: translateY(-2px);
     box-shadow: 0 12px 28px color-mix(in srgb, var(--text) 15%, transparent);
   }
 }
@@ -706,10 +702,7 @@
   :root { --nav-h: 56px; }
   .nav-logo { font-size: 15px; letter-spacing: 0.34em; text-indent: 0.34em; }
   .lang-switch { gap: 8px; font-size: 10px; letter-spacing: 0.14em; }
-  .nav-cta {
-    padding: 4px 10px; font-size: 8.5px;
-    letter-spacing: 0.1em; line-height: 1.18; text-align: center;
-  }
+  .nav-cta { padding: 4px 12px; font-size: 8.5px; letter-spacing: 0.1em; line-height: 1.18; text-align: center; }
   .nav-cta .cta-full { display: none; }
   .nav-cta .cta-short { display: inline; }
 }
